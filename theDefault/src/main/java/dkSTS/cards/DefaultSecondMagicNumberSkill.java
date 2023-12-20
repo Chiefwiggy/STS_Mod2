@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import dkSTS.DefaultMod;
-import dkSTS.characters.TheDefault;
+import dkSTS.characters.TheBruxa;
 
 import static dkSTS.DefaultMod.makeCardPath;
 
@@ -40,7 +40,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = TheBruxa.Enums.COLOR_BRUXA;
 
     private static final int COST = 1;
 

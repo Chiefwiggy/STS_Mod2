@@ -5,8 +5,8 @@
     <!--The author name(s) as they appear in MTS and any other comments are in your ModTheSpire.json-->
     <groupId>dksts</groupId>
     <artifactId>dkSTS</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
-    <name>DasKrueger BaseMod</name>
-    <version>0.1.0</version>
+    <name>The Bruxa</name>
+    <version>0.1.1</version>
     <description>A default base to start your own mod from.</description>
 
     <properties>

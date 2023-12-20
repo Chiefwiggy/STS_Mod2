@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import dkSTS.DefaultMod;
-import dkSTS.characters.TheDefault;
+import dkSTS.characters.TheBruxa;
 
 import static dkSTS.DefaultMod.makeCardPath;
 
@@ -33,7 +33,6 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int DAMAGE = 7;
@@ -44,7 +43,7 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public DefaultAttackWithVariable() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, TheBruxa.Enums.COLOR_BRUXA, RARITY, TARGET);
         baseDamage = DAMAGE;
 
         isMultiDamage = true;

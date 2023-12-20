@@ -18,16 +18,13 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import dkSTS.relics.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import dkSTS.cards.*;
-import dkSTS.characters.TheDefault;
+import dkSTS.characters.TheBruxa;
 import dkSTS.events.IdentityCrisisEvent;
 import dkSTS.potions.PlaceholderPotion;
-import dkSTS.relics.BottledPlaceholderRelic;
-import dkSTS.relics.DefaultClickableRelic;
-import dkSTS.relics.PlaceholderRelic;
-import dkSTS.relics.PlaceholderRelic2;
 import dkSTS.util.IDCheckDontTouchPls;
 import dkSTS.util.TextureLoader;
 import dkSTS.variables.DefaultCustomVariable;
@@ -122,18 +119,18 @@ public class DefaultMod implements
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "dkSTSResources/images/1024/card_default_gray_orb.png";
     
     // Character assets
-    private static final String THE_DEFAULT_BUTTON = "dkSTSResources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "dkSTSResources/images/charSelect/DefaultCharacterPortraitBG.png";
-    public static final String THE_DEFAULT_SHOULDER_1 = "dkSTSResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = "dkSTSResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = "dkSTSResources/images/char/defaultCharacter/corpse.png";
+    private static final String THE_BRUXA_BUTTON = "dkSTSResources/images/charSelect/DefaultCharacterButton.png";
+    private static final String THE_BRUXA_PORTRAIT = "dkSTSResources/images/charSelect/DefaultCharacterPortraitBG.png";
+    public static final String THE_BRUXA_SHOULDER_1 = "dkSTSResources/images/char/defaultCharacter/shoulder.png";
+    public static final String THE_BRUXA_SHOULDER_2 = "dkSTSResources/images/char/defaultCharacter/shoulder2.png";
+    public static final String THE_BRUXA_CORPSE = "dkSTSResources/images/char/defaultCharacter/corpse.png";
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "dkSTSResources/images/Badge.png";
     
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "dkSTSResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "dkSTSResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_BRUXA_SKELETON_ATLAS = "dkSTSResources/images/char/defaultCharacter/skeleton.atlas";
+    public static final String THE_BRUXA_SKELETON_JSON = "dkSTSResources/images/char/defaultCharacter/skeleton.json";
     
     // =============== MAKE IMAGE PATHS =================
     
@@ -166,7 +163,7 @@ public class DefaultMod implements
     // =============== /INPUT TEXTURE LOCATION/ =================
     
     
-    // =============== SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE =================
+    // =============== SUBSCRIBE, CREATE THE COLOR_BRUXA, INITIALIZE =================
     
     public DefaultMod() {
         logger.info("Subscribe to BaseMod hooks");
@@ -202,9 +199,9 @@ public class DefaultMod implements
         
         logger.info("Done subscribing");
         
-        logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
+        logger.info("Creating the color " + TheBruxa.Enums.COLOR_BRUXA.toString());
         
-        BaseMod.addColor(TheDefault.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(TheBruxa.Enums.COLOR_BRUXA, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
                 DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
@@ -279,20 +276,20 @@ public class DefaultMod implements
         logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
     }
     
-    // ============== /SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE/ =================
+    // ============== /SUBSCRIBE, CREATE THE COLOR_BRUXA, INITIALIZE/ =================
     
     
     // =============== LOAD THE CHARACTER =================
     
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + TheDefault.Enums.THE_DEFAULT.toString());
+        logger.info("Beginning to edit characters. " + "Add " + TheBruxa.Enums.THE_BRUXA.toString());
         
-        BaseMod.addCharacter(new TheDefault("the Default", TheDefault.Enums.THE_DEFAULT),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_DEFAULT);
+        BaseMod.addCharacter(new TheBruxa("the Default", TheBruxa.Enums.THE_BRUXA),
+                THE_BRUXA_BUTTON, THE_BRUXA_PORTRAIT, TheBruxa.Enums.THE_BRUXA);
         
         receiveEditPotions();
-        logger.info("Added " + TheDefault.Enums.THE_DEFAULT.toString());
+        logger.info("Added " + TheBruxa.Enums.THE_BRUXA.toString());
     }
     
     // =============== /LOAD THE CHARACTER/ =================
@@ -350,7 +347,7 @@ public class DefaultMod implements
         // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
         AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
             .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
-            .playerClass(TheDefault.Enums.THE_DEFAULT) // Character specific event
+            .playerClass(TheBruxa.Enums.THE_BRUXA) // Character specific event
             .create();
 
         // Add the event
@@ -368,9 +365,9 @@ public class DefaultMod implements
         logger.info("Beginning to edit potions");
         
         // Class Specific Potion. If you want your potion to not be class-specific,
-        // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
+        // just remove the player class at the end (in this case the "TheDefaultEnum.THE_BRUXA".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheDefault.Enums.THE_DEFAULT);
+        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheBruxa.Enums.THE_BRUXA);
         
         logger.info("Done editing potions");
     }
@@ -392,9 +389,7 @@ public class DefaultMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheDefault.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new EldritchRuneRelic(), TheBruxa.Enums.COLOR_BRUXA);
         
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -403,6 +398,7 @@ public class DefaultMod implements
         // If you don't have this it won't be visible in the compendium until you see them in game
         // (the others are all starters so they're marked as seen in the character file)
         UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
+        UnlockTracker.markRelicAsSeen(EldritchRuneRelic.data.ID);
         logger.info("Done adding relics!");
     }
     

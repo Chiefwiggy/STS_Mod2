@@ -1,10 +1,23 @@
 {
-"dkSTS:CommonPower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
-},
-"dkSTS:RarePower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
-}
+        "dkSTS:CommonPower": {
+                "NAME": "Placeholder Power",
+                "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
+        },
+        "dkSTS:RarePower": {
+                "NAME": "Placeholder Power",
+                "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
+        },
+        "dkSTS:FrostPower": {
+                "NAME": "Frost",
+                "DESCRIPTIONS": ["This creature deals 10% less damage and takes 10% more damage for ", " turn.", " turns."]
+        },
+        "dkSTS:EvasionPower": {
+                "NAME": "Evasion",
+                "DESCRIPTIONS": [
+                        "The next ",
+                        "time",
+                        " times",
+                        " you take unblocked damage, if the damage is less than 10, take half damage instead."
+                ]
+        }
 }

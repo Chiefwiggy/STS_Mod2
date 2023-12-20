@@ -7,6 +7,20 @@
     "DESCRIPTION": "Whenever you play a card, gain 1 dexterity this turn only."
   },
   {
+    "NAMES": [
+      "frost",
+      "Frost"
+    ],
+    "DESCRIPTION": "The target takes 10% more damage. The target deals 10% less damage."
+  },
+  {
+    "NAMES": [
+      "evasion",
+      "Evasion"
+    ],
+    "DESCRIPTION": "The next X times you take unblocked damage, if the damage is less than 10, take half the damage instead."
+  },
+  {
     "PROPER_NAME": "Multiword Keyword",
     "NAMES": [
       "Multiword Keyword",

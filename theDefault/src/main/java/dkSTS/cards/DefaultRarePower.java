@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import dkSTS.DefaultMod;
-import dkSTS.characters.TheDefault;
+import dkSTS.characters.TheBruxa;
 import dkSTS.powers.RarePower;
 
 import static dkSTS.DefaultMod.makeCardPath;
@@ -32,7 +32,7 @@ public class DefaultRarePower extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = TheBruxa.Enums.COLOR_BRUXA;
 
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;

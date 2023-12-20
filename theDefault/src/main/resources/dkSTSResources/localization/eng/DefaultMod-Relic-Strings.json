@@ -30,5 +30,12 @@
       ".",
       "Select a card to bottle for "
     ]
+  },
+  "dkSTS:EldritchRuneRelic": {
+    "NAME": "Rune of Eldritch Armor",
+    "FLAVOR": "This soul mark gives you a case of ice",
+    "DESCRIPTIONS": [
+      "At the start of each combat, gain 5 #yTemporary #yHit #yPoints."
+    ]
   }
 }
