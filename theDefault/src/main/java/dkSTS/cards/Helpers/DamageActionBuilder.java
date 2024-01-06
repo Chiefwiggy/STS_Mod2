@@ -4,13 +4,14 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class DamageActionBuilder {
 
-    private AbstractMonster _target;
-    private AbstractPlayer _source;
+    private AbstractCreature _target;
+    private final AbstractPlayer _source;
     private int _damage;
     private DamageInfo.DamageType _type;
     private AbstractGameAction.AttackEffect _effect;
@@ -23,7 +24,7 @@ public class DamageActionBuilder {
         _effect = AbstractGameAction.AttackEffect.NONE;
     }
 
-    public DamageActionBuilder target(AbstractMonster m) {
+    public DamageActionBuilder target(AbstractCreature m) {
         this._target = m;
         return this;
     }

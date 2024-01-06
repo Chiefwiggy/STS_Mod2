@@ -12,16 +12,18 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import dkSTS.cards.AbstractDefaultCard;
 import dkSTS.relics.*;
+import dkSTS.util.EvasionCounter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import dkSTS.cards.*;
 import dkSTS.characters.TheBruxa;
 import dkSTS.events.IdentityCrisisEvent;
 import dkSTS.potions.PlaceholderPotion;
@@ -71,6 +73,8 @@ public class DefaultMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
+        PreStartGameSubscriber,
+        PostDeathSubscriber,
         PostInitializeSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
@@ -353,6 +357,8 @@ public class DefaultMod implements
         // Add the event
         BaseMod.addEvent(eventParams);
 
+        EvasionCounter.RegisterSelf();
+
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
     }
@@ -390,9 +396,10 @@ public class DefaultMod implements
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new EldritchRuneRelic(), TheBruxa.Enums.COLOR_BRUXA);
-        
+        BaseMod.addRelicToCustomPool(new AlacrityRuneRelic(), TheBruxa.Enums.COLOR_BRUXA);
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
+
         
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
@@ -481,6 +488,9 @@ public class DefaultMod implements
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
+
+        BaseMod.loadCustomStringsFile(StanceStrings.class,
+                getModID() + "Resources/localization/eng/DefaultMod-Stance-Strings.json");
         
         logger.info("Done edittting strings");
     }
@@ -517,5 +527,15 @@ public class DefaultMod implements
     // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
+    }
+
+    @Override
+    public void receivePreStartGame() {
+        EvasionCounter.StartRun();
+    }
+
+    @Override
+    public void receivePostDeath() {
+        EvasionCounter.ResetCounter();
     }
 }

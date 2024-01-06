@@ -8,7 +8,7 @@ import dkSTS.powers.Helpers.PowerDataBuilder;
 public abstract class AbstractCountdownPower extends AbstractCustomPower {
 
     public AbstractCountdownPower(PowerData data, AbstractCreature owner, AbstractCreature source, int amount) {
-        super(data, owner, source, amount);
+        super(new PowerDataBuilder(data).turnBased().build(), owner, source, amount);
 
     }
 
@@ -20,7 +20,7 @@ public abstract class AbstractCountdownPower extends AbstractCustomPower {
 
         if (amount == 0) {
             this.addToBot(
-                    new RemoveSpecificPowerAction(this.owner, this.owner, this)
+                    new RemoveSpecificPowerAction(this.owner, this.owner, this.ID)
             );
         }
 

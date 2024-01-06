@@ -1,5 +1,16 @@
 [
   {
+    "PROPER_NAME": "Multiword Keyword",
+    "NAMES": [
+      "Multiword Keyword",
+      "multiword_keyword",
+      "multiword_keywords",
+      "multikey",
+      "multikeyword"
+    ],
+    "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+  },
+  {
     "NAMES": [
       "keyword",
       "keywords"
@@ -11,24 +22,50 @@
       "frost",
       "Frost"
     ],
-    "DESCRIPTION": "The target takes 10% more damage. The target deals 10% less damage."
+    "DESCRIPTION": "The target takes 15% more damage. The target deals 15% less damage. When target has 8 stacks of #yFrost, they gain #yFrozen"
+  },
+  {
+    "NAMES": [
+      "frozen",
+      "Frozen"
+    ],
+    "DESCRIPTION": "The target takes double damage and deals no damage."
   },
   {
     "NAMES": [
       "evasion",
       "Evasion"
     ],
-    "DESCRIPTION": "The next X times you take unblocked damage, if the damage is less than 10, take half the damage instead."
+    "DESCRIPTION": "The next X times you take unblocked damage, if the damage is less than 6, take half damage instead. Each monster killed increases this threshold by 1 for the rest of your run."
   },
   {
-    "PROPER_NAME": "Multiword Keyword",
     "NAMES": [
-      "Multiword Keyword",
-      "multiword_keyword",
-      "multiword_keywords",
-      "multikey",
-      "multikeyword"
+      "hex",
+      "Hex",
+      "Hex:",
+      "hex:"
     ],
-    "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+    "DESCRIPTION": "An effect that will be applied go off in two turns."
+  },
+  {
+    "NAMES": [
+      "hunger",
+      "Hunger"
+    ],
+    "DESCRIPTION": "At the start of your turn, lose HP equal to your Hunger. When you reach 6 #yHunger, enter #rBloodlust."
+  },
+  {
+    "NAMES": [
+      "ward",
+      "Ward"
+    ],
+    "DESCRIPTION": "Gain Temporary Hit Points which do not disappear between rounds."
+  },
+  {
+    "NAMES": [
+      "bloodlust",
+      "Bloodlust"
+    ],
+    "DESCRIPTION": "In #yBloodlust Stance, gain [E] . Whenever you deal damage to an enemy, heal 50% of the damage dealt and add a #yStarving to your Discard Pile."
   }
 ]

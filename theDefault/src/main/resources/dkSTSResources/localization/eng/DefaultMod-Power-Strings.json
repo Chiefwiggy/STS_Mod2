@@ -9,7 +9,20 @@
         },
         "dkSTS:FrostPower": {
                 "NAME": "Frost",
-                "DESCRIPTIONS": ["This creature deals 10% less damage and takes 10% more damage for ", " turn.", " turns."]
+                "DESCRIPTIONS": [
+                        "This creature deals 15% less damage and takes 15% more damage for ",
+                        " turn.",
+                        " turns.",
+                        " When you gain 8 stacks of this, replace this with #yFrozen."
+                ]
+        },
+        "dkSTS:FrozenPower": {
+                "NAME": "Frozen",
+                "DESCRIPTIONS": [
+                        "This creature takes double damage and deals no damage for ",
+                        " turn.",
+                        " turns."
+                ]
         },
         "dkSTS:EvasionPower": {
                 "NAME": "Evasion",
@@ -17,7 +30,48 @@
                         "The next ",
                         "time",
                         " times",
-                        " you take unblocked damage, if the damage is less than 10, take half damage instead."
+                        " you take unblocked damage, if the damage is less than ",
+                        ", take half damage instead."
+                ]
+        },
+        "dkSTS:AnnihilationRunePower": {
+                "NAME": "Hex: Annihilation",
+                "DESCRIPTIONS": [
+                        "In ",
+                        "1 turn",
+                        " turns",
+                        ", this creature will take ",
+                        " damage."
+                ]
+        },
+        "dkSTS:RimefrostRunePower": {
+                "NAME": "Hex: Rimefrost",
+                "DESCRIPTIONS": [
+                        "In ",
+                        "1 turn",
+                        " turns",
+                        ", this creature will become #yFrozen."
+                ]
+        },
+        "dkSTS:BloodPower": {
+                "NAME": "Hunger",
+                "DESCRIPTIONS": [
+                        "Lose ",
+                        " HP at the start of each turn. If you have 5 stacks of #yHunger at the start of your turn, enter #yBloodlust"
+                ]
+        },
+        "dkSTS:WiltingThornsPower": {
+                "NAME": "Wilting Thorns",
+                "DESCRIPTIONS": [
+                        "The next time you take damage, lose ",
+                        " #y Thorns."
+                ]
+        },
+        "dkSTS:DesperationPower": {
+                "NAME": "Desperation",
+                "DESCRIPTIONS": [
+                        "Your attacks deal ",
+                        " extra damage for each #yHunger you have."
                 ]
         }
 }

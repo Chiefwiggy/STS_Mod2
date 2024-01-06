@@ -18,16 +18,15 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import dkSTS.powers.EvasionPower;
-import dkSTS.relics.EldritchRuneRelic;
+import dkSTS.cards.Attacks.Starter.Bite;
+import dkSTS.cards.Attacks.Starter.Frostbite;
+import dkSTS.cards.Attacks.Starter.Strike;
+import dkSTS.cards.Skills.Starter.Defend;
+import dkSTS.cards.Skills.Starter.SpiderClimb;
+import dkSTS.relics.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import dkSTS.DefaultMod;
-import dkSTS.cards.*;
-import dkSTS.relics.DefaultClickableRelic;
-import dkSTS.relics.PlaceholderRelic;
-import dkSTS.relics.PlaceholderRelic2;
 
 import java.util.ArrayList;
 
@@ -180,6 +179,7 @@ public class TheBruxa extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         retVal.add(EldritchRuneRelic.data.ID);
+        retVal.add(AlacrityRuneRelic.data.ID);
 
         return retVal;
     }

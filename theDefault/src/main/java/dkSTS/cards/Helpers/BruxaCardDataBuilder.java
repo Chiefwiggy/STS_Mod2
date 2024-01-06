@@ -30,6 +30,16 @@ public class BruxaCardDataBuilder {
         return this;
     }
 
+    public BruxaCardDataBuilder x() {
+        cd.COST = -1;
+        return this;
+    }
+
+    public BruxaCardDataBuilder unplayable() {
+        cd.COST = -2;
+        return this;
+    }
+
     public BruxaCardDataBuilder type(CardType type) {
         cd.TYPE = type;
         return this;
@@ -42,6 +52,11 @@ public class BruxaCardDataBuilder {
 
     public BruxaCardDataBuilder target(CardTarget target) {
         cd.TARGET = target;
+        return this;
+    }
+
+    public BruxaCardDataBuilder color(CardColor color) {
+        cd.COLOR = color;
         return this;
     }
 

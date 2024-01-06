@@ -1,0 +1,6 @@
+{
+  "dkSTS:BloodlustStance": {
+    "NAME": "Bloodlust",
+    "DESCRIPTION": ["On entering, gain [E] . NL Whenever you deal damage to an enemy, heal 50% of the damage dealt and add a #yStarving to your Discard Pile. NL Exit this stance at the end of your turn."]
+  }
+}

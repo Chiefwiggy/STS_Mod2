@@ -14,8 +14,17 @@ public class PowerDataBuilder {
         pd = new PowerData();
     }
 
+    public PowerDataBuilder(PowerData data) {
+        pd = data;
+    }
+
     public PowerDataBuilder id(Class<?> clazz) {
         pd.POWER_ID = DefaultMod.makeID(clazz.getSimpleName());
+        return this;
+    }
+
+    public PowerDataBuilder offset(int offset) {
+        pd.POWER_ID = pd.POWER_ID + offset;
         return this;
     }
 
