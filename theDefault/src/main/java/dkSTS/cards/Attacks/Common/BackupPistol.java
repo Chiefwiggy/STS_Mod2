@@ -45,12 +45,12 @@ public class BackupPistol extends AbstractBruxaCard {
                 this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale), 0.3F));
             }
         }
-        addToBottom(
-                new DamageActionBuilder()
-                        .damage(damage)
-                        .target(m)
-                        .build()
-        );
+        new DamageActionBuilder()
+                .damage(damage)
+                .target(m)
+                .repeat(2)
+                .addToBottom();
+
         if (m != null) {
             if (Settings.FAST_MODE) {
                 this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale), 0.1F));
@@ -58,11 +58,5 @@ public class BackupPistol extends AbstractBruxaCard {
                 this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale), 0.3F));
             }
         }
-        addToBottom(
-                new DamageActionBuilder()
-                        .damage(damage)
-                        .target(m)
-                        .build()
-        );
     }
 }

@@ -9,4 +9,8 @@ public abstract class AbstractCustomRelic extends CustomRelic {
         super(data.ID, data.IMG, data.OUTLINE, data.TIER, data.SFX);
     }
 
+    public void onIncreaseMaxHealth(int amount) {}
+    public void onDecreaseMaxHealth(int amount) {}
+
+    public void atEndOfBattle() {}
 }

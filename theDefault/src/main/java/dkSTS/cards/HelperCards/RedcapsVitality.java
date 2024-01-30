@@ -8,8 +8,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import dkSTS.cards.Abstracts.AbstractBruxaCard;
+import dkSTS.cards.Helpers.ApplyPowerBuilder;
 import dkSTS.cards.Helpers.BruxaCardData;
 import dkSTS.cards.Helpers.BruxaCardDataBuilder;
+import dkSTS.powers.VitalityPower;
 
 public class RedcapsVitality extends AbstractBruxaCard {
     public static BruxaCardData data = new BruxaCardDataBuilder()
@@ -17,17 +19,17 @@ public class RedcapsVitality extends AbstractBruxaCard {
             .type(AbstractCard.CardType.SKILL)
             .rarity(AbstractCard.CardRarity.SPECIAL)
             .color(AbstractCard.CardColor.COLORLESS)
-            .cost(0)
+            .unplayable()
             .img("Skill.png")
             .build();
 
-    private static final int TEMP_HP_GAINED = 12;
-    private static final int UPGRADE = 6;
+    private static final int VIT_GAINED = 1;
+    private static final int UPGRADE = 1;
 
     public RedcapsVitality() {
         super(data);
 
-        baseMagicNumber = magicNumber = TEMP_HP_GAINED;
+        baseMagicNumber = magicNumber = VIT_GAINED;
     }
 
 
@@ -44,9 +46,9 @@ public class RedcapsVitality extends AbstractBruxaCard {
 
     @Override
     public void onChoseThisOption() {
-        AbstractPlayer p = AbstractDungeon.player;
-        addToBottom(
-                new AddTemporaryHPAction(p,p,magicNumber)
-        );
+        new ApplyPowerBuilder()
+                .power(VitalityPower.class)
+                .amount(1)
+                .addToBottom();
     }
 }

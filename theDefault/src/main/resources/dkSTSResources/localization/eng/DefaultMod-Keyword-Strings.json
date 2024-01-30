@@ -19,10 +19,10 @@
   },
   {
     "NAMES": [
-      "frost",
-      "Frost"
+      "chill",
+      "Chill"
     ],
-    "DESCRIPTION": "The target takes 15% more damage. The target deals 15% less damage. When target has 8 stacks of #yFrost, they gain #yFrozen"
+    "DESCRIPTION": "The target takes 15% more damage. The target deals 15% less damage. When target has 8 stacks of #yChill, they gain #yFrozen"
   },
   {
     "NAMES": [
@@ -52,7 +52,7 @@
       "hunger",
       "Hunger"
     ],
-    "DESCRIPTION": "At the start of your turn, lose HP equal to your Hunger. When you reach 6 #yHunger, enter #rBloodlust."
+    "DESCRIPTION": "At the start of your turn, convert HP equal to your Hunger into #yWard. If you start your turn with 5 #yHunger, enter #rBloodlust."
   },
   {
     "NAMES": [
@@ -67,5 +67,146 @@
       "Bloodlust"
     ],
     "DESCRIPTION": "In #yBloodlust Stance, gain [E] . Whenever you deal damage to an enemy, heal 50% of the damage dealt and add a #yStarving to your Discard Pile."
+  },
+  {
+    "NAMES": [
+      "vitality",
+      "Vitality"
+    ],
+    "DESCRIPTION": "Increase your Drain by your Vitality."
+  },
+  {
+    "NAMES": [
+      "drain",
+      "Drain"
+    ],
+    "DESCRIPTION": "The enemy loses HP equal to your Drain. Heal HP equal to #yDrain and reduce your #yHunger by 1."
+  },
+  {
+    "NAMES" : [
+      "redraw",
+      "Redraw"
+    ],
+    "DESCRIPTION": "Draw X cards from your Discard Pile randomly."
+  },
+  {
+    "NAMES": [
+      "bloodied",
+      "Bloodied"
+    ],
+    "DESCRIPTION": "Affects creatures under half their max health."
+  },
+  {
+    "NAMES": [
+      "wolf",
+      "Wolf",
+      "wolves",
+      "Wolves"
+    ],
+    "DESCRIPTION": "An entity which deals 2 damage to a random enemy when #ySicced."
+  },
+  {
+    "NAMES": [
+      "sic",
+      "Sic",
+      "sicced",
+      "Sicced",
+      "sics",
+      "Sics"
+    ],
+    "DESCRIPTION": "Have your #yWolves attack, dealing 2 damage each to a random enemy."
+  },
+  {
+    "NAMES": [
+      "feral",
+      "Feral"
+    ],
+    "DESCRIPTION": "Your #yWolves deal X extra damage."
+  },
+  {
+    "NAMES": [
+      "wild",
+      "Wild"
+    ],
+    "DESCRIPTION": "If you are in #yBloodlust or #yDire #yWolf, gain 4 #yVigor."
+  },
+  {
+    "NAMES": [
+      "reshuffle",
+      "Reshuffle"
+    ],
+    "DESCRIPTION": "Shuffle your Discard Pile back into your Draw Pile."
+  },
+  {
+    "NAMES": [
+      "flux",
+      "Flux",
+      "flux:",
+      "Flux:"
+    ],
+    "DESCRIPTION": "This effect only triggers if you have four unique buffs."
+  },
+  {
+    "NAMES": [
+      "invisibility",
+      "Invisibility",
+      "invisible",
+      "Invisible",
+      "Invisible,"
+    ],
+    "DESCRIPTION": "While in this stance, the first time you would take damage each turn, don't. This stance ends when you take damage or end your turn with no [E] or after 5 turns."
+  },
+  {
+    "NAMES": [
+      "Dire Wolf",
+      "dire wolf",
+      "Dire_Wolf",
+      "dire_wolf"
+    ],
+    "DESCRIPTION": "When you enter this stance, gain #yWard equal to half your Max HP. Your attacks deal 25% more damage, and your #yWolves deal 50% damage, however you cannot gain Block. You exit this stance when you run out of #yWard. When you exit this stance, shuffle 5 #yDazed into your Discard Pile."
+  },
+  {
+    "NAMES": [
+      "Devour",
+      "devour",
+      "Devoured",
+      "devoured"
+    ],
+    "DESCRIPTION": "Remove all #yWolves. Gain 1 Strength for every 2 #yWolves devoured."
+  },
+  {
+    "NAMES": [
+      "Voidflux",
+      "voidflux"
+    ],
+    "DESCRIPTION": "This effect only triggers if you have 3 unique debuffs OR if you are holding a #yVoid Status. For the purposes of this effect, #yHunger is a Debuff."
+  },
+  {
+    "NAMES": [
+      "Expose",
+      "expose"
+    ],
+    "DESCRIPTION": "Attacks against this creature deal X more damage."
+  },
+  {
+    "NAMES": [
+      "Upgradable",
+      "upgradable"
+    ],
+    "DESCRIPTION": "This card be upgraded again."
+  },
+  {
+    "NAMES": [
+      "Downgrade",
+      "downgrade"
+    ],
+    "DESCRIPTION": "Revert this card to its state before it was upgraded."
+  },
+  {
+    "NAMES": [
+      "bonus",
+      "Bonus"
+    ],
+    "DESCRIPTION": "Must be the second card you play in a turn."
   }
 ]

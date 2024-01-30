@@ -8,9 +8,9 @@
                 "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
         },
         "dkSTS:FrostPower": {
-                "NAME": "Frost",
+                "NAME": "Chill",
                 "DESCRIPTIONS": [
-                        "This creature deals 15% less damage and takes 15% more damage for ",
+                        "This creature deals ","% less damage and takes ","% more damage for ",
                         " turn.",
                         " turns.",
                         " When you gain 8 stacks of this, replace this with #yFrozen."
@@ -56,8 +56,8 @@
         "dkSTS:BloodPower": {
                 "NAME": "Hunger",
                 "DESCRIPTIONS": [
-                        "Lose ",
-                        " HP at the start of each turn. If you have 5 stacks of #yHunger at the start of your turn, enter #yBloodlust"
+                        "Convert ",
+                        " HP to #yWard at the start of each turn. If you have 5 stacks of #yHunger at the start of your turn, enter #yBloodlust instead."
                 ]
         },
         "dkSTS:WiltingThornsPower": {
@@ -72,6 +72,167 @@
                 "DESCRIPTIONS": [
                         "Your attacks deal ",
                         " extra damage for each #yHunger you have."
+                ]
+        },
+        "dkSTS:VitalityPower": {
+                "NAME": "Vitality",
+                "DESCRIPTIONS": [
+                        "Whenever you would Drain, Drain ",
+                        " more HP."
+                ]
+        },
+        "dkSTS:WolfPower": {
+                "NAME": "Wolves",
+                "DESCRIPTIONS": [
+                        "When #ySicced, each #yWolf you have deals 2 damage."
+                ]
+        },
+        "dkSTS:FeralPower": {
+                "NAME": "Feral",
+                "DESCRIPTIONS": [
+                        "Your #yWolves deal ",
+                        " more damage."
+                ]
+        },
+        "dkSTS:ImpatientPower": {
+                "NAME": "Impatient",
+                "DESCRIPTIONS": [
+                        "The first ",
+                        "card",
+                        " cards",
+                        " you play each turn which would give you effects next turn, give them to you this turn as well. NL (",
+                        " times left.)"
+                ]
+        },
+        "dkSTS:LoseWolfPower": {
+                "NAME": "Lose Wolf",
+                "DESCRIPTIONS": [
+                        "At the end of your turn, lose ", " #yWolves."
+                ]
+        },
+        "dkSTS:RewindPower": {
+                "NAME": "Favorable Rewind",
+                "DESCRIPTIONS": [
+                        "When you #yRedraw, you cannot draw #yCurses nor #yStatus cards."
+                ]
+        },
+        "dkSTS:CureWoundsPower": {
+                "NAME": "Curing Wounds",
+                "DESCRIPTIONS": [
+                        "Whenever you draw a #yStatus card, heal ", " HP."
+                ]
+        },
+        "dkSTS:CloakPower": {
+                "NAME": "Cloaked",
+                "DESCRIPTIONS": [
+                        "The next ",
+                        "time ",
+                        " times ",
+                        "you take damage, take 0 instead."
+                ]
+        },
+        "dkSTS:ReduceNextSkill": {
+                "NAME": "Reduce Next Skill",
+                "DESCRIPTIONS": [
+                        "The next ",
+                        "Skill ",
+                        " Skills ",
+                        "you play cost 1 less."
+                ]
+        },
+        "dkSTS:SimplementsPower": {
+                "NAME": "Simplements",
+                "DESCRIPTIONS": [
+                        "Your Basic and Common Attack Cards deal ",
+                        " extra damage."
+                ]
+        },
+        "dkSTS:HastePower": {
+                "NAME": "Haste",
+                "DESCRIPTIONS": [
+                        "At the start of your turn, gain ",
+                        "[E] ",
+                        " [E]",
+                        ", draw ",
+                        " card",
+                        " cards",
+                        ", and add ",
+                        " #yDazed to your Discard Pile."
+                ]
+        },
+        "dkSTS:CrimsonRitePower": {
+                "NAME": "Crimson Rite",
+                "DESCRIPTIONS": [
+                        "Whenever you lose HP from a card, gain ",
+                        " Regen."
+                ]
+        },
+        "dkSTS:BadDreamPower": {
+                "NAME": "Bad Dream",
+                "DESCRIPTIONS": [
+                        "Whenever a card is played while this enemy does not intend to attack, they lose ",
+                        " HP."
+                ]
+        },
+        "dkSTS:EchoesOfTheVoidPower": {
+                "NAME": "Echoes of the Void",
+                "DESCRIPTIONS": [
+                        "Whenever you take damage, add ",
+                        "an #yEcho #yTendril",
+                        " #yEcho #yTendrils",
+                        " to your hand."
+                ]
+        },
+        "dkSTS:ExposePower": {
+                "NAME": "Exposed",
+                "DESCRIPTIONS": [
+                        "This creature takes ",
+                        " more damage from Attacks."
+                ]
+        },
+        "dkSTS:NullRunePower": {
+                "NAME": "Hex: Null",
+                "DESCRIPTIONS": [
+                        "In ",
+                        "1 turn",
+                        " turns",
+                        ", this creature will lose all of its #yStrength."
+                ]
+        },
+        "dkSTS:NextTurnPlayCardPower": {
+                "NAME": "Play Card Next Turn",
+                "DESCRIPTIONS": [
+                        "At the start of next turn, play ",
+                        ".",
+                        " twice."
+                ]
+        },
+        "dkSTS:LupineMutagenPower": {
+                "NAME": "Unstable Transformation",
+                "DESCRIPTIONS": [
+                        "When you leave #yDire #yWolf, die."
+                ]
+        },
+        "dkSTS:EmbraceTheVoidPower": {
+                "NAME": "Embraced the Void",
+                "DESCRIPTIONS": [
+                        "You can always trigger #yFlux and #pVoidflux cards. At the start of your turn, lose 1 HP."
+                ]
+        },
+        "dkSTS:DancingStarsPower": {
+                "NAME": "Dancing Stars",
+                "DESCRIPTIONS": [
+                        "At the start of your turn, Apply 1 #yExpose to a random enemy",
+                        ".",
+                        " times."
+                ]
+        },
+        "dkSTS:SicWolvesNextTurnPower": {
+                "NAME": "Sic Wolves Next Turn",
+                "DESCRIPTIONS": [
+                        "At the start of your next turn, #ySic your #yWolves ",
+                        ".",
+                        " times."
                 ]
         }
 }

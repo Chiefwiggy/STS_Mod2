@@ -15,8 +15,8 @@ public abstract class AbstractRune extends AbstractInstancedPower {
 
     @Override
     public void onRemove() {
-        super.onRemove();
         whenRuneResolves();
+        super.onRemove();
     }
 
     public abstract void whenRuneResolves();

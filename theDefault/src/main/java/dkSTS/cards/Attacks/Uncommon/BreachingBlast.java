@@ -22,7 +22,7 @@ public class BreachingBlast extends AbstractBruxaCard {
             .target(CardTarget.ENEMY)
             .build();
 
-    private static final int DAMAGE = 5;
+    private static final int DAMAGE = 6;
 
     private static final int MULTIPLIER = 3;
     private static final int MULTIPLIER_UPGRADE = 1;
@@ -44,21 +44,18 @@ public class BreachingBlast extends AbstractBruxaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(
-                new DamageActionBuilder()
-                        .damage(damage)
-                        .target(m)
-                        .animation(AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                        .build()
-        );
+        new DamageActionBuilder()
+                .damage(damage)
+                .target(m)
+                .animation(AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .addToBottom();
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        int realBaseDamage = this.baseDamage;
-        this.baseDamage = getMultiplier(mo) * realBaseDamage;
         super.calculateCardDamage(mo);
-        this.baseDamage = realBaseDamage;
+        damage *= getMultiplier(mo);
+
         this.isDamageModified = this.damage != this.baseDamage;
     }
 

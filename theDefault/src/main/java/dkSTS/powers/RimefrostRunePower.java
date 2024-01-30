@@ -10,12 +10,14 @@ public class RimefrostRunePower extends AbstractRune {
 
     public static PowerData data = new PowerDataBuilder()
             .id(RimefrostRunePower.class)
-            .img_path("placeholder_power")
+            .img_path("frozenhex")
             .debuff()
             .build();
 
     public RimefrostRunePower(final AbstractCreature owner, final AbstractCreature source) {
         super(data, owner, source, 0);
+
+
     }
 
     @Override
@@ -25,7 +27,7 @@ public class RimefrostRunePower extends AbstractRune {
 
     @Override
     public void whenRuneResolves() {
-        this.addToBot(
+        this.addToTop(
                 new ApplyPowerAction(
                         owner, owner, new FrozenPower(owner, owner, 1), 1
                 )

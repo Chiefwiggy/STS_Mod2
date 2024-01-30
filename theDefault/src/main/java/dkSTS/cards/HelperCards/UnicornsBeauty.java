@@ -12,6 +12,7 @@ import dkSTS.cards.Abstracts.AbstractBruxaCard;
 import dkSTS.cards.Helpers.ApplyPowerBuilder;
 import dkSTS.cards.Helpers.BruxaCardData;
 import dkSTS.cards.Helpers.BruxaCardDataBuilder;
+import dkSTS.powers.FeralPower;
 
 public class UnicornsBeauty extends AbstractBruxaCard {
     public static BruxaCardData data = new BruxaCardDataBuilder()
@@ -19,7 +20,7 @@ public class UnicornsBeauty extends AbstractBruxaCard {
             .type(CardType.SKILL)
             .rarity(CardRarity.SPECIAL)
             .color(CardColor.COLORLESS)
-            .cost(0)
+            .unplayable()
             .img("Skill.png")
             .build();
 
@@ -47,7 +48,7 @@ public class UnicornsBeauty extends AbstractBruxaCard {
     @Override
     public void onChoseThisOption() {
         new ApplyPowerBuilder()
-                .power(BufferPower.class)
+                .power(FeralPower.class)
                 .amount(magicNumber)
                 .addToBottom();
     }

@@ -36,12 +36,10 @@ public class Strike extends AbstractBruxaCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        addToBottom(
-                new DamageActionBuilder()
-                        .damage(damage)
-                        .target(abstractMonster)
-                        .animation(AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-                        .build()
-        );
+        new DamageActionBuilder()
+                .damage(damage)
+                .target(abstractMonster)
+                .animation(AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                .addToBottom();
     }
 }

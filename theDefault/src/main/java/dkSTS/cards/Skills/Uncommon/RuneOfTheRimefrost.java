@@ -1,10 +1,8 @@
-package dkSTS.cards.Skills.Rare;
+package dkSTS.cards.Skills.Uncommon;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.BerserkPower;
 import dkSTS.cards.Abstracts.AbstractBruxaCard;
 import dkSTS.cards.Helpers.ApplyPowerBuilder;
 import dkSTS.cards.Helpers.BruxaCardData;
@@ -14,10 +12,10 @@ import dkSTS.powers.RimefrostRunePower;
 public class RuneOfTheRimefrost extends AbstractBruxaCard {
     public static BruxaCardData data = new BruxaCardDataBuilder()
             .id(RuneOfTheRimefrost.class)
-            .img("Skill.png")
+            .img("FreezeHex.png")
             .cost(1)
             .type(AbstractCard.CardType.SKILL)
-            .rarity(AbstractCard.CardRarity.RARE)
+            .rarity(CardRarity.UNCOMMON)
             .target(AbstractCard.CardTarget.ENEMY)
             .build();
 

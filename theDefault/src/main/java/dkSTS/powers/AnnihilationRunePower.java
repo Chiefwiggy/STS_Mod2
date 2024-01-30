@@ -33,15 +33,13 @@ public class AnnihilationRunePower extends AbstractRune {
     }
     @Override
     public void whenRuneResolves() {
-        addToTop(
-                new DamageActionBuilder()
-                        .target((AbstractMonster)owner)
-                        .damageType(DamageInfo.DamageType.HP_LOSS)
-                        .damage(magicNumber)
-                        .build()
-        );
+        new DamageActionBuilder()
+                .target((AbstractMonster)owner)
+                .damageType(DamageInfo.DamageType.HP_LOSS)
+                .damage(magicNumber)
+                .addToTop();
 
-        addAnimation(WeightyImpactEffect.class, Color.GOLD.cpy());
+        //addAnimation(WeightyImpactEffect.class, Color.GOLD.cpy());
     }
 
     @Override

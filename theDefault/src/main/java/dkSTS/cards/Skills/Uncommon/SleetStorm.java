@@ -19,16 +19,16 @@ import java.util.ArrayList;
 public class SleetStorm extends AbstractBruxaCard {
     public static BruxaCardData data = new BruxaCardDataBuilder()
             .id(SleetStorm.class)
-            .img("Skill.png")
+            .img("SleetStorm.png")
             .rarity(CardRarity.UNCOMMON)
             .type(CardType.SKILL)
             .target(CardTarget.ALL)
             .cost(2)
             .build();
 
-    private static final int FROST = 3;
+    private static final int FROST = 4;
 
-    private static final int FROST_UPGRADE = 1;
+    private static final int FROST_UPGRADE = 2;
 
     private static final int EVASION = 1;
 

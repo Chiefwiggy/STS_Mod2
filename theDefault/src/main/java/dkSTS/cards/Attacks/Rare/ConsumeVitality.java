@@ -5,10 +5,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import dkSTS.actions.ConsumeVitalityAction;
 import dkSTS.cards.Abstracts.AbstractBruxaCard;
+import dkSTS.cards.Abstracts.AbstractDrainCard;
 import dkSTS.cards.Helpers.BruxaCardData;
 import dkSTS.cards.Helpers.BruxaCardDataBuilder;
 
-public class ConsumeVitality extends AbstractBruxaCard {
+public class ConsumeVitality extends AbstractDrainCard {
 
     public static BruxaCardData data = new BruxaCardDataBuilder()
             .id(ConsumeVitality.class)
@@ -31,19 +32,21 @@ public class ConsumeVitality extends AbstractBruxaCard {
 
         exhaust = exhaustOnUseOnce = true;
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = HEAL;
+        baseHeal = heal = HEAL;
     }
 
     @Override
     protected void UpgradeParameters() {
         upgradeDamage(DAMAGE_UPGRADE);
-        upgradeMagicNumber(HEAL_UPGRADE);
+        upgradeHeal(HEAL_UPGRADE);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void postHungerUse(AbstractPlayer p, AbstractMonster m) {
         addToBottom(
-                new ConsumeVitalityAction(m, new DamageInfo(p,damage), magicNumber)
+                new ConsumeVitalityAction(m, new DamageInfo(p,damage), heal)
         );
     }
+
+
 }

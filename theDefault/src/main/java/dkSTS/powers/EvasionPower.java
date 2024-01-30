@@ -19,6 +19,7 @@ import dkSTS.DefaultMod;
 import dkSTS.powers.Helpers.PowerData;
 import dkSTS.powers.Helpers.PowerDataBuilder;
 import dkSTS.relics.AlacrityRuneRelic;
+import dkSTS.relics.CrystalCharm;
 import dkSTS.util.EvasionCounter;
 import dkSTS.util.EvasionSubscriber;
 
@@ -26,7 +27,7 @@ public class EvasionPower extends AbstractCustomPower implements EvasionSubscrib
 
     public static PowerData data = new PowerDataBuilder()
             .id(EvasionPower.class)
-            .img_path("placeholder_power")
+            .img_path("evasion")
             .notTurnBased()
             .buff()
             .build();
@@ -62,6 +63,9 @@ public class EvasionPower extends AbstractCustomPower implements EvasionSubscrib
 
         if (info.owner != null && info.type == DamageInfo.DamageType.NORMAL && damageAmount >= 1 && damageAmount <= EvasionCounter.GetCurrentEvasion()) {
             this.flash();
+            if (p.hasRelic(CrystalCharm.data.ID)) {
+                ((CrystalCharm)p.getRelic(CrystalCharm.data.ID)).InvokeEvasion();
+            }
             timesBlocked++;
             if (timesBlocked >= this.amount) {
                 this.addToTop(new RemoveSpecificPowerAction(p, p, EvasionPower.data.POWER_ID));

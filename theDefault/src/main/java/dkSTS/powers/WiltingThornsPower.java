@@ -14,7 +14,7 @@ import dkSTS.powers.Helpers.PowerDataBuilder;
 public class WiltingThornsPower extends AbstractCustomPower {
     public static PowerData data = new PowerDataBuilder()
             .id(WiltingThornsPower.class)
-            .img_path("placeholder_power")
+            .img_path("wilting_thorns")
             .debuff()
             .notTurnBased()
             .build();

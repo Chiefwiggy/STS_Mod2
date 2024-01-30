@@ -18,7 +18,7 @@ public class ArchfeysWisdom extends AbstractBruxaCard  {
             .type(AbstractCard.CardType.SKILL)
             .rarity(AbstractCard.CardRarity.SPECIAL)
             .color(AbstractCard.CardColor.COLORLESS)
-            .cost(0)
+            .unplayable()
             .img("Skill.png")
             .build();
 

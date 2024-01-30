@@ -18,7 +18,7 @@ public class RelicDataBuilder {
         return this;
     }
 
-    public RelicDataBuilder path(String path) {
+    public RelicDataBuilder img_path(String path) {
         rd.IMG_PATH = path;
         return this;
     }

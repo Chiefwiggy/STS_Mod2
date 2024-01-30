@@ -6,8 +6,8 @@
     <groupId>dksts</groupId>
     <artifactId>dkSTS</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>The Bruxa</name>
-    <version>0.1.1</version>
-    <description>A default base to start your own mod from.</description>
+    <version>1.0.1</version>
+    <description>The Bruxa is a new character added with 75 new cards.</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -51,6 +51,13 @@
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
+        </dependency>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl.mod</groupId>
+            <artifactId>ActLikeIt</artifactId>
+            <version>0.9.0</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/workshop/content/646570/1934902042/actlikeit.jar</systemPath>
         </dependency>
     </dependencies>
 

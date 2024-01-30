@@ -1,10 +1,8 @@
-package dkSTS.cards.Skills.Rare;
+package dkSTS.cards.Skills.Uncommon;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.BerserkPower;
 import dkSTS.cards.Abstracts.AbstractBruxaCard;
 import dkSTS.cards.Helpers.ApplyPowerBuilder;
 import dkSTS.cards.Helpers.BruxaCardData;
@@ -16,14 +14,14 @@ public class RuneOfAnnihilation extends AbstractBruxaCard {
     public static BruxaCardData data = new BruxaCardDataBuilder()
             .id(RuneOfAnnihilation.class)
             .img("HexDisintegration.png")
-            .rarity(AbstractCard.CardRarity.RARE)
+            .rarity(CardRarity.UNCOMMON)
             .target(AbstractCard.CardTarget.ENEMY)
             .type(AbstractCard.CardType.SKILL)
             .cost(3)
             .build();
 
-    private final static int ANNIHILATION = 46;
-    private final static int ANNIHILATION_UPGRADE = 12;
+    private final static int ANNIHILATION = 49;
+    private final static int ANNIHILATION_UPGRADE = 17;
 
     public RuneOfAnnihilation() {
         super(data);

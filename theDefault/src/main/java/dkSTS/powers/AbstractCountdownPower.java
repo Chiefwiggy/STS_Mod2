@@ -9,8 +9,8 @@ public abstract class AbstractCountdownPower extends AbstractCustomPower {
 
     public AbstractCountdownPower(PowerData data, AbstractCreature owner, AbstractCreature source, int amount) {
         super(new PowerDataBuilder(data).turnBased().build(), owner, source, amount);
-
     }
+
 
     @Override
     public void atEndOfRound() {

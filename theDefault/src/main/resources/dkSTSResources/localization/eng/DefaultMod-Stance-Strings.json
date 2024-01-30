@@ -2,5 +2,20 @@
   "dkSTS:BloodlustStance": {
     "NAME": "Bloodlust",
     "DESCRIPTION": ["On entering, gain [E] . NL Whenever you deal damage to an enemy, heal 50% of the damage dealt and add a #yStarving to your Discard Pile. NL Exit this stance at the end of your turn."]
+  },
+  "dkSTS:InvisibilityStance": {
+    "NAME": "Invisibility",
+    "DESCRIPTION": [
+      "While in this Stance, the first time you would take damage each turn, don't. This stance ends when you take damage or end your turn with no [E] or after 5 turns. NL (",
+      " turns ",
+      " turn ",
+      "remaining.)"
+    ]
+  },
+  "dkSTS:DireWolfStance": {
+    "NAME": "Dire Wolf",
+    "DESCRIPTION": [
+      "When you enter this stance, you gain #yWard equal to half your max HP. While in this stance, your attacks deal 25% more damage, your Wolves deal 50% more damage, but you can no longer gain Block. Exit this stance when you lose your #yWard."
+    ]
   }
 }

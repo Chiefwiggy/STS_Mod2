@@ -3,13 +3,20 @@ package dkSTS.stances;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
+import com.megacrit.cardcrawl.actions.watcher.NotStanceCheckAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.stances.WrathStance;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
+import com.megacrit.cardcrawl.vfx.combat.EmptyStanceEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
 import dkSTS.DefaultMod;
@@ -21,7 +28,7 @@ import dkSTS.stances.Helpers.StanceData;
 
 public abstract class AbstractBruxaStance extends AbstractStance {
 
-    private StanceData stanceData;
+    private final StanceData stanceData;
     public AbstractBruxaStance(StanceData data) {
         this.ID = data.ID;
         this.name = data.NAME;
@@ -64,6 +71,9 @@ public abstract class AbstractBruxaStance extends AbstractStance {
 
     public void onAfterCardPlayed(AbstractCard card) {}
 
+    public void onMonsterAttacked(AbstractMonster mon, DamageInfo info, int damageAmount) {}
+
+    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) { return damageAmount;}
 
 
     protected void addToBot(AbstractGameAction action) {
@@ -73,4 +83,14 @@ public abstract class AbstractBruxaStance extends AbstractStance {
     protected void addToTop(AbstractGameAction action) {
         AbstractDungeon.actionManager.addToTop(action);
     }
+
+
+
+    protected final void exitStance() {
+        AbstractPlayer p = AbstractDungeon.player;
+        this.addToBot(new NotStanceCheckAction("Neutral", new VFXAction(new EmptyStanceEffect(p.hb.cX, p.hb.cY), 0.1F)));
+        this.addToBot(new ChangeStanceAction("Neutral"));
+    }
+
+    public float modifyBlock(float blockAmount, AbstractCard c) { return blockAmount;}
 }

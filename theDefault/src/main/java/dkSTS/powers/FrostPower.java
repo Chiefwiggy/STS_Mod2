@@ -1,29 +1,36 @@
 package dkSTS.powers;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import dkSTS.powers.Helpers.PowerData;
 import dkSTS.powers.Helpers.PowerDataBuilder;
+import dkSTS.relics.BlastHammerRelic;
+import dkSTS.relics.RimefrostPendantRelic;
 
 public class FrostPower extends AbstractCountdownPower {
 
     public static PowerData data = new PowerDataBuilder()
             .id(FrostPower.class)
-            .img_path("placeholder_power")
+            .img_path("frost")
             .debuff()
             .turnBased()
             .build();
 
     private static final int TURN_TO_FROZEN = 8;
+
+
+
+
     public FrostPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         super(data, owner, source, amount);
 
         this.priority = 100;
-        owner.tint.changeColor(Color.CYAN.cpy());
     }
 
 
@@ -34,7 +41,16 @@ public class FrostPower extends AbstractCountdownPower {
 
     @Override
     public void updateDescription() {
-        description = DESC[0] + amount + SwitchPlural(1, 2) + DESC[3];
+        int damagePercent = 15;
+        int reducePercent = 15;
+
+        if (AbstractDungeon.player.hasRelic(BlastHammerRelic.data.ID)) {
+            damagePercent = 40;
+        }
+        if (AbstractDungeon.player.hasRelic(RimefrostPendantRelic.data.ID)) {
+            reducePercent = 25;
+        }
+        description = DESC[0] + reducePercent + DESC[1] + damagePercent + DESC[2] +  amount + SwitchPlural(3, 4) + DESC[5];
     }
 
     @Override
@@ -45,6 +61,9 @@ public class FrostPower extends AbstractCountdownPower {
 
     public float atDamageGive(float damage, DamageType type) {
         if (type == DamageType.NORMAL) {
+            if (AbstractDungeon.player.hasRelic(RimefrostPendantRelic.data.ID)) {
+                return MathUtils.floor(damage * 0.75F);
+            }
             return (float)Math.floor(damage * 0.85F);
         } else {
             return damage;
@@ -54,6 +73,9 @@ public class FrostPower extends AbstractCountdownPower {
     @Override
     public float atDamageReceive(float damage, DamageType damageType) {
         if (damageType == DamageType.NORMAL) {
+            if (AbstractDungeon.player.hasRelic(BlastHammerRelic.data.ID)) {
+                return MathUtils.floor(damage * 1.4F);
+            }
             return (float)Math.floor(damage * 1.15F);
         } else {
             return damage;

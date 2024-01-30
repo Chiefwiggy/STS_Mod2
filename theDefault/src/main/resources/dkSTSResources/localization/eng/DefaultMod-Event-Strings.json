@@ -17,5 +17,105 @@
       "[Leave]",
       "Select card to remove."
     ]
+  },
+  "dkSTS:TestEvent": {
+    "NAME": "TEST",
+    "DESCRIPTIONS": [""],
+    "OPTIONS": [""]
+  },
+  "dkSTS:UpdatedVampireEvent": {
+    "NAME": "Vampires",
+    "DESCRIPTIONS": [
+      "Navigating an unlit street, you come across several hooded figures in the midst of a familiar ritual. As you approach, they turn to you in unison. You recognize these as spawn, and it seems as if they have lost their master. The tallest among them shows reverence and extends a long, pale hand towards you. NL ~Join~ ~us~ ~spawn.~",
+      "The tall figure grabs your arm, examining your runes. Not familiar with your form of #rVampirism, you trade secrets and exchange blood, giving you a new aspect to your #rVampirism. NL ... NL Your hunger gains a new intensity, but you've learned how to more effectively sap vitality from others. Once again, it's time to #rfeed...",
+      "The pale figures gasp as you take out the #yBlood #yVial. NL \"The sacred blood... the master's blood! THE MASTER'S BLOOD\" NL They all chant fervently as the tall one bows before you. \"Drink from His blood and become #y~resplendent.~ ASCEND!\" NL The chant growing louder, you consume the contents of the vial. Your vision immediately ~warps~ and fades into darkness. NL NL You wake up some time later, alone. You feel... incredible. You are no longer a mere spawn.",
+      "You step back and raise your weapon in defiance. The tall figure sighs. NL \"Very well, spawn.\" The entire group of hooded figures morph into a thick black fog that flows away from you. NL You are alone once more."
+    ],
+    "OPTIONS": [
+      "[Aid in Ritual] #gRemove #gall Strikes. #gReceive #g4 #gmore Bites.",
+      "[Use Sacred Blood and Ascend] #gRemove #gall Strikes. #gReceive #y2 Ascended Bites.",
+      "[Refuse]",
+      "[Lack the Correct Materials to Ascend]"
+    ]
+  },
+  "dkSTS:MysteriousCaller": {
+    "NAME": "Mysterious Caller",
+    "DESCRIPTIONS": [
+      "As you #p~ascend~ the spire, you notice a #p~mirror~ on your journey. NL NL Looking into the #p~Mirror,~ you #rdon't notice a ~reflection.~ NL At the base of the mirror, you notice a #bsapphire embedded into the frame. NL NL What do you do?",
+      "As you begin to feel a connection to this mirror, your consciousness latches onto something deeper inside. NL You push deeper and hear the voice of a unknown figure. A figure begins to manifest on the mirror. NL Something about this presence feels #p~otherworldly.~",
+      "\"Greetings, #r~spawn.~ NL I am a #gFey of the Court of the Wilds. My name is of #r~no~ #r~concern~ to you. The fact is, your #bancestor owed me a significant debt that #rMUST be #yrepaid. \" NL NL The #gcreature you see before you appears to be a creature made of #gbark and #gautumnal leaves. Its eyes captivate you, seemingly holding #pgalaxies ~undiscovered.~ ",
+      "\"So, #rspawn, will you #ypay what is owed to me?\"",
+      "\"How boring, but I suppose #yGold shall suffice.\" NL The #gFey begins to count the money given. NL NL ",
+      "\"The pestle! Where did #yYOU find that?... No matter... I suppose how that it's back home, that the debt has been paid.\" NL The #gFey looks pleased, seemingly having returned something that was once its possession. NL NL",
+      "\"Ah, how delightful.\" NL Your #rblood begins to #rdrain quickly from your body, as you feel your #rvitality and #rconstitution growing #rweaker. NL \"Your blood runs #r~vile~ and your #r~bloodline~ #r~tarnished~, but I suppose your #bbargain has been satisfied.\" NL The #gFey looks disgusted, but a #bdeal is a #bdeal. NL NL",
+      "\"So #rspawn, now that the #ydebt is paid, I can #p~offer~ #p~POWER~ which can #gempower your #rblood. Only say the word, and #p~POWER~ shall be yours, but do not think it will be #yfree.\"",
+      "The #gFey looks #ggiddy. NL \"What a beautiful present. I hope you won't be missing these memories! I took a couple other ones as payment. Well, now it's time to go. Enjoy living in #gbliss!\" NL NL A couple moments later, the projection on the mirror fades, and you suddenly have fewer memories. NL You continue on your way.",
+      "The #gFey looks #gpleasantly #rdisgusted. NL \"Quite a #p~nasty~ set of curses you've had placed upon you. I ~guess~ I can bear the brunt of these effects for you, but you'll need to provide me #ryour #rvitality as your payment. Anyway, now I must figure out how best to expunge these curses... ta ta.\" NL NL A couple moments later, the projection on the mirror fades, and suddenly you are without curse, but you feel all the vitality you regain is being transported elsewhere. NL You continue on your way.",
+      "",
+      "The #gFey looks disappointed, but accepts your decision. NL The image of the #gFey begins to disappear from the mirror as whatever debt your caregiver owed has seemingly been #ypaid.",
+
+      "\"Fine, but I will return to #rCOLLECT. You cannot escape your #rdebt so easily.\" NL NL You manage to snap your connection to the #bgem. While painful, you feel like you've fully disconnected. NL You continue on your way.",
+
+      "~SMASH!!!!!~ NL You ~smash~ the mirror. It breaks far easier than expected. NL You take the #bSapphire and are on your #gmerry way.",
+
+      "\"Wait\" NL A voice echoes from the mirror. A voice that is unknown, but still gives you a #p~mysterious~ sense of ~déjà~ ~vu~ NL NL \"You ~WILL~ #rWANT to hear what I have to say... otherwise you'll never be free of that #p~curse~ you bear.\"",
+      "\"There #rWILL be #r~consequences~ for your #rrudeness, spawn.\" NL NL And within in a couple steps, you no longer hear the voice. NL You wonder who that could have been... nevertheless, you must push on.",
+      "Hearing the whispers of a voice begin to enter your mind, you quickly snap the connection to the mirror. The #bsapphire begins to glow. NL Best get out of there for now."
+    ],
+    "OPTIONS": [
+      "[Attune] Peer into the #pMirror",
+      "[Smash] #rLose ", " #rHP. #gGain #yMysterious #ySapphire.",
+      "[Leave]",
+
+      "[Listen]",
+      "[Break Connection and Run] #rLose ", " #rHP. ",
+
+      "[Offer Gold] #rLose ", " #yGold. #gRemove #yAncestor's #yDebt.",
+      "[Locked] Requires: ", " Gold.",
+      "[Offer Pestle] #rLose #yHag's #yPestle. #gRemove #yAncestor's #yDebt.",
+      "[Locked] Requires: Hag's Pestle",
+      "[Offer Vitality] #rLose ", " #rMax #rHP. #gRemove #yAncestor's #yDebt.",
+      "[Break Connection and Run] #rLose ", " #rHP.",
+
+      "[Continue]",
+
+      "[Forget] #gRemove 2 #gcards #gfrom #gyour #gdeck. #rRemove ", " #yimportant #rcards.",
+      "[Expunge] #gRemove #gALL #pCurses. #rYour #rhealing #ris #rhalved.",
+      "[Treasure] #gObtain 6 #grandom #grelics. #rLose [E] #reach #rturn.",
+      "[Decline]",
+
+      "[Return and Attune] Hear out the mirror.",
+      "[Leave Anyway]",
+
+      "[Locked] Requires: At least 1 Curse"
+
+    ]
+
+  },
+  "dkSTS:Nightclub": {
+    "NAME": "Nightclub",
+    "DESCRIPTIONS": [
+      "Navigating the spire, you see a #ptechnocolor #pnightclub. A curious sight in these parts. Making your way forward, you notice that the creatures #bdancing all appear to be incredibly synchronized... that's when it dawns on you... these creatures do not have a mind of their own. NL As you hurriedly attempt to find the exit, you are stopped by a tall, handsome figure with pale skin whose voice sounds almost tinny. NL NL He extends a hand forth and says \"Come dance with me,",
+        " spawn.\"",
+        " brother.\"",
+        " sister.\"",
+        " broken one.\"",
+      "While it's been a while since you've let loose, there is something nice about taking a moment to relax... however, it feels as if you've lost a sliver of your memory... NL \"Well, let us now get down to business. You've come to trade, yes?\"",
+      "The man looks disappointed, \"Ah, tis a shame. Hope to see you again someday then!\" NL NL The man escorts you to the exit to continue your ascent...",
+      "\"Good deal!\", the man looks happy about the transaction. NL NL \"Now, let me show you to the exit. This has been a wonderful experience and I wish you well on your journey.\" NL After a few moments, the #pnightclub fades in the background, and you continue your ascent.",
+      "\"Ah, I'm sorry we couldn't come to an arrangement, but I appreciate the dance. At least take some #rvitality for the road, you look pallid. I wish you well on your journey!\" NL NL The man leads you to the exit. After a few moments, the #pnightclub fades in the background, and you continue your ascent."
+    ],
+    "OPTIONS": [
+      "[Accept] #bDance with the creature. #rRemove #ra #rrandom #rcard #rfrom #ryour #rdeck.",
+      "[Locked] Cannot Dance while Clumsy",
+      "[Refuse]",
+      "[Trade] #rLose ", ". #gGain ", ".",
+      "[Purchase] #rLose ", " #rGold. #gGain ", ".",
+      "[Refuse] #gGain ", " #gMax #gHP.",
+      "[Locked] Requires: Any common relic.",
+      "[Locked] Requires: Any uncommon relic.",
+      "[Locked] Requires: Any rare relic.",
+      "[Locked] Requires: ", " Gold."
+    ]
   }
 }

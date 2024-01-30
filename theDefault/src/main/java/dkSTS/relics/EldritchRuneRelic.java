@@ -11,7 +11,7 @@ public class EldritchRuneRelic extends AbstractCustomRelic {
 
     public static RelicData data = new RelicDataBuilder()
             .id(EldritchRuneRelic.class)
-            .path("placeholder_relic.png")
+            .img_path("placeholder_relic.png")
             .tier(RelicTier.COMMON)
             .sfx(LandingSound.MAGICAL)
             .build();

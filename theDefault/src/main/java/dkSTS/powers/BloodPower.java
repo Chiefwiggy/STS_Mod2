@@ -1,10 +1,13 @@
 package dkSTS.powers;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import dkSTS.cards.Helpers.DamageActionBuilder;
 import dkSTS.powers.Helpers.PowerData;
@@ -14,9 +17,9 @@ import dkSTS.stances.BloodlustStance;
 public class BloodPower extends AbstractCustomPower {
     public static PowerData data = new PowerDataBuilder()
             .id(BloodPower.class)
-            .img_path("placeholder_power")
+            .img_path("hunger")
             .buff()
-            .turnBased()
+            .notTurnBased()
             .build();
 
 
@@ -41,18 +44,20 @@ public class BloodPower extends AbstractCustomPower {
     public void atStartOfTurn() {
         if (this.amount >= BLOOD_NEEDED) {
             addToBot(
-                    new ReducePowerAction(owner, owner, this, BLOOD_NEEDED)
+                    new RemoveSpecificPowerAction(owner, source, this)
             );
             addToBot(new ChangeStanceAction(new BloodlustStance()));
 
         } else {
-            addToBot(
-                    new DamageActionBuilder()
-                            .damage(this.amount)
-                            .target(this.owner)
-                            .damageType(DamageInfo.DamageType.HP_LOSS)
-                            .animation(AbstractGameAction.AttackEffect.POISON)
-                            .build()
+            new DamageActionBuilder()
+                    .damage(this.amount)
+                    .target(this.owner)
+                    .damageType(DamageInfo.DamageType.HP_LOSS)
+                    .animation(AbstractGameAction.AttackEffect.POISON)
+                    .addToBottom();
+
+            this.addToBot(
+                    new AddTemporaryHPAction(this.owner, this.owner, this.amount)
             );
         }
     }

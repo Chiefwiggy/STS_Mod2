@@ -44,5 +44,62 @@
     "DESCRIPTIONS": [
       "At the start of each combat, gain 1 #yEvasion."
     ]
+  },
+  "dkSTS:CrystalCharm": {
+    "NAME": "Crystal Charm",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Whenever your #yEvasion is triggered, gain ",
+      " #yWard."
+    ]
+  },
+  "dkSTS:AncestorsDebt": {
+    "NAME": "Ancestor's Debt",
+    "FLAVOR": "Someone in your past made a deal with an unknown entity which continues to sap your lifeforce...",
+    "DESCRIPTIONS": [
+      "Whenever you increase your Max HP, lose 5 Gold for each Hit Point gained. NL Whenever you add a card to your Deck, lose 5 gold if its Common, 10 gold if its Uncommon, and 15 gold if its Rare."
+    ]
+  },
+  "dkSTS:MarkOfEnervation": {
+    "NAME": "Mark of Enervation",
+    "FLAVOR": "You paid the price...",
+    "DESCRIPTIONS": [
+      "Lose [E] at the start of your turn."
+    ]
+  },
+  "dkSTS:MysteriousSapphire": {
+    "NAME": "Mysterious Sapphire",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Set every 40th card's cost to 0."
+    ]
+  },
+  "dkSTS:MarkOfTheThorn": {
+    "NAME": "Mark of the Thorn.",
+    "FLAVOR": "A \"gift\" from a fey which serves as a painful reminder of your ancestor's past deeds.",
+    "DESCRIPTIONS": [
+      "Whenever you receive healing, receive only half the healing."
+    ]
+  },
+  "dkSTS:BlastHammerRelic": {
+    "NAME": "Blast Hammer",
+    "FLAVOR": "A gift from the devil that led you here...",
+    "DESCRIPTIONS": [
+      "Enemies with #yChill take 40% more damage rather than 15%."
+    ]
+  },
+  "dkSTS:RimefrostPendantRelic": {
+    "NAME": "Rimefrost Pendant",
+    "FLAVOR": "You had to sell this to pay the interest on your debt... now you have it back...",
+    "DESCRIPTIONS": [
+      "Enemies with #yChill deal 25% less damage rather than 15%."
+    ]
+  },
+  "dkSTS:RocEggRelic": {
+    "NAME": "Roc Egg",
+    "FLAVOR": "This egg was lain by a beast of unimaginable size and untold elemental power... looks delicious.",
+    "DESCRIPTIONS": [
+      "If you have remaining #yWard at the end of combat, heal HP equal to your remaining #yWard."
+    ]
   }
 }

@@ -7,17 +7,18 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import dkSTS.cards.Abstracts.AbstractBruxaCard;
+import dkSTS.cards.Abstracts.AbstractWildCard;
 import dkSTS.cards.Helpers.ApplyPowerBuilder;
 import dkSTS.cards.Helpers.BruxaCardData;
 import dkSTS.cards.Helpers.BruxaCardDataBuilder;
 import dkSTS.cards.Helpers.DamageActionBuilder;
 import dkSTS.powers.BloodPower;
 
-public class FeralLeap extends AbstractBruxaCard {
+public class FeralLeap extends AbstractWildCard {
 
     public static BruxaCardData data = new BruxaCardDataBuilder()
             .id(FeralLeap.class)
-            .img("Attack.png")
+            .img("FeralLeap.png")
             .target(CardTarget.ENEMY)
             .type(CardType.ATTACK)
             .rarity(CardRarity.COMMON)
@@ -45,15 +46,13 @@ public class FeralLeap extends AbstractBruxaCard {
 
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+    public void wildUse(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
 
-        addToBottom(
-                new DamageActionBuilder()
-                        .damage(damage)
-                        .target(abstractMonster)
-                        .animation(AbstractGameAction.AttackEffect.SLASH_VERTICAL)
-                        .build()
-        );
+        new DamageActionBuilder()
+                .damage(damage)
+                .target(abstractMonster)
+                .animation(AbstractGameAction.AttackEffect.SLASH_VERTICAL)
+                .addToBottom();
 
         new ApplyPowerBuilder()
                 .power(BloodPower.class)

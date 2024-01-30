@@ -1,7 +1,11 @@
 package dkSTS;
 
+import actlikeit.dungeons.CustomDungeon;
 import basemod.*;
+import basemod.devcommands.unlock.Unlock;
 import basemod.eventUtil.AddEventParams;
+import basemod.eventUtil.EventUtils;
+import basemod.eventUtil.util.Condition;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -13,19 +17,32 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.GameActionManager;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
+import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import dkSTS.acts.TheWilds;
 import dkSTS.cards.AbstractDefaultCard;
+import dkSTS.events.*;
+import dkSTS.potions.AbstractCustomPotion;
+import dkSTS.potions.BruxaStancePotion;
+import dkSTS.potions.ChillPotion;
+import dkSTS.potions.Helpers.PotionData;
 import dkSTS.relics.*;
 import dkSTS.util.EvasionCounter;
+import dkSTS.variables.HealVariable;
+import dkSTS.variables.MagicThird;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import dkSTS.characters.TheBruxa;
-import dkSTS.events.IdentityCrisisEvent;
 import dkSTS.potions.PlaceholderPotion;
 import dkSTS.util.IDCheckDontTouchPls;
 import dkSTS.util.TextureLoader;
@@ -98,9 +115,7 @@ public class DefaultMod implements
     public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
     
     // Potion Colors in RGB
-    public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
-    public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
-    public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
+
     
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
@@ -160,6 +175,10 @@ public class DefaultMod implements
     
     public static String makeEventPath(String resourcePath) {
         return getModID() + "Resources/images/events/" + resourcePath;
+    }
+
+    public static String makeUIPath(String resourcePath) {
+        return getModID() + "Resources/images/ui/" + resourcePath;
     }
     
     // =============== /MAKE IMAGE PATHS/ =================
@@ -334,6 +353,8 @@ public class DefaultMod implements
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
+
+
         
         // =============== EVENTS =================
         // https://github.com/daviscook477/BaseMod/wiki/Custom-Events
@@ -349,13 +370,73 @@ public class DefaultMod implements
 
         // Create a new event builder
         // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
-        AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
-            .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
-            .playerClass(TheBruxa.Enums.THE_BRUXA) // Character specific event
-            .create();
+//        AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
+//            .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
+//            .playerClass(TheBruxa.Enums.THE_BRUXA) // Character specific event
+//            .create();
 
-        // Add the event
-        BaseMod.addEvent(eventParams);
+//        AddEventParams ep2 = new AddEventParams.Builder(TestEvent.data.ID, TestEvent.class)
+//                .dungeonID(TheCity.ID)
+//                .playerClass(TheBruxa.Enums.THE_BRUXA)
+//                .create();
+
+        AddEventParams vampireEvent = new AddEventParams.Builder(UpdatedVampireEvent.data.ID, UpdatedVampireEvent.class)
+                .dungeonID(TheCity.ID)
+                .playerClass(TheBruxa.Enums.THE_BRUXA)
+                .overrideEvent(Vampires.ID)
+                .eventType(EventUtils.EventType.FULL_REPLACE)
+                .create();
+
+        AddEventParams mysteriousEvent = new AddEventParams.Builder(MysteriousCaller.data.ID, MysteriousCaller.class)
+                .dungeonIDs(TheCity.ID, TheBeyond.ID)
+                .playerClass(TheBruxa.Enums.THE_BRUXA)
+                .spawnCondition(() -> false)
+                .create();
+
+        AddEventParams nightclubEvent = new AddEventParams.Builder(Nightclub.data.ID, Nightclub.class)
+                .dungeonIDs(TheCity.ID, TheBeyond.ID, Exordium.ID)
+                .spawnCondition(() -> {
+                    AbstractPlayer p = AbstractDungeon.player;
+                    boolean foundCommon = false;
+                    boolean foundUncommon = false;
+                    boolean foundRare = false;
+                    int count = 0;
+                    for (AbstractRelic r : p.relics) {
+                        switch(r.tier) {
+                            case COMMON:
+                                if (!foundCommon) {
+                                    foundCommon = true;
+                                    count++;
+                                }
+                                break;
+                            case UNCOMMON:
+                                if (!foundUncommon) {
+                                    foundUncommon = true;
+                                    count++;
+                                }
+                                break;
+                            case RARE:
+                                if (!foundRare) {
+                                    foundRare = true;
+                                    count++;
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    return count >= 2;
+                })
+                .create();
+
+        BaseMod.addEvent(vampireEvent);
+        BaseMod.addEvent(mysteriousEvent);
+        BaseMod.addEvent(nightclubEvent);
+
+        CustomDungeon.addAct(4, new TheWilds());
+
+
+
 
         EvasionCounter.RegisterSelf();
 
@@ -366,6 +447,14 @@ public class DefaultMod implements
     // =============== / POST-INITIALIZE/ =================
     
     // ================ ADD POTIONS ===================
+
+    private void customAddPotion(Class<? extends AbstractCustomPotion> clazz, PotionData data, AbstractPlayer.PlayerClass playerClass) {
+        BaseMod.addPotion(clazz, data.LIQUID_COLOR, data.HYBRID_COLOR, data.SPOTS_COLOR, data.ID, playerClass);
+    }
+
+    public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
+    public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
+    public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
     
     public void receiveEditPotions() {
         logger.info("Beginning to edit potions");
@@ -373,8 +462,13 @@ public class DefaultMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_BRUXA".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheBruxa.Enums.THE_BRUXA);
-        
+//        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheBruxa.Enums.THE_BRUXA);
+//            BaseMod.addPotion(ChillPotion.class, ChillPotion.data.LIQUID_COLOR, ChillPotion.data.HYBRID_COLOR, ChillPotion.data.SPOTS_COLOR, ChillPotion.data.ID, TheBruxa.Enums.THE_BRUXA);
+        this.customAddPotion(ChillPotion.class, ChillPotion.data, TheBruxa.Enums.THE_BRUXA);
+        //this.customAddPotion(BruxaStancePotion.class, BruxaStancePotion.data, TheBruxa.Enums.THE_BRUXA);
+
+        BaseMod.addPotion(BruxaStancePotion.class, BruxaStancePotion.data.LIQUID_COLOR, BruxaStancePotion.data.HYBRID_COLOR, BruxaStancePotion.data.SPOTS_COLOR, BruxaStancePotion.data.ID, TheBruxa.Enums.THE_BRUXA);
+
         logger.info("Done editing potions");
     }
     
@@ -397,8 +491,18 @@ public class DefaultMod implements
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new EldritchRuneRelic(), TheBruxa.Enums.COLOR_BRUXA);
         BaseMod.addRelicToCustomPool(new AlacrityRuneRelic(), TheBruxa.Enums.COLOR_BRUXA);
+        BaseMod.addRelicToCustomPool(new CrystalCharm(), TheBruxa.Enums.COLOR_BRUXA);
+        BaseMod.addRelicToCustomPool(new AncestorsDebt(), TheBruxa.Enums.COLOR_BRUXA);
+
+        BaseMod.addRelicToCustomPool(new RimefrostPendantRelic(), TheBruxa.Enums.COLOR_BRUXA);
+        BaseMod.addRelicToCustomPool(new BlastHammerRelic(), TheBruxa.Enums.COLOR_BRUXA);
+        BaseMod.addRelicToCustomPool(new RocEggRelic(), TheBruxa.Enums.COLOR_BRUXA);
+
+        BaseMod.addRelic(new MysteriousSapphire(), RelicType.SHARED);
+        BaseMod.addRelic(new MarkOfEnervation(), RelicType.SHARED);
+        BaseMod.addRelic(new MarkOfTheThorn(), RelicType.SHARED);
         // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
+        //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
 
         
         // Mark relics as seen - makes it visible in the compendium immediately
@@ -406,6 +510,7 @@ public class DefaultMod implements
         // (the others are all starters so they're marked as seen in the character file)
         UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
         UnlockTracker.markRelicAsSeen(EldritchRuneRelic.data.ID);
+
         logger.info("Done adding relics!");
     }
     
@@ -424,6 +529,8 @@ public class DefaultMod implements
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
+        BaseMod.addDynamicVariable(new MagicThird());
+        BaseMod.addDynamicVariable(new HealVariable());
         
         logger.info("Adding cards");
         // Add the cards
@@ -491,6 +598,9 @@ public class DefaultMod implements
 
         BaseMod.loadCustomStringsFile(StanceStrings.class,
                 getModID() + "Resources/localization/eng/DefaultMod-Stance-Strings.json");
+
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+                getModID() + "Resources/localization/eng/DefaultMod-Act-Strings.json");
         
         logger.info("Done edittting strings");
     }

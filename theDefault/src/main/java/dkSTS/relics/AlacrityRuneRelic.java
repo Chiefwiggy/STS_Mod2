@@ -11,7 +11,7 @@ public class AlacrityRuneRelic extends AbstractCustomRelic {
 
     public static RelicData data = new RelicDataBuilder()
             .id(AlacrityRuneRelic.class)
-            .path("placeholder_relic.png")
+            .img_path("alacrity.png")
             .tier(RelicTier.STARTER)
             .sfx(LandingSound.MAGICAL)
             .build();

@@ -1,6 +1,18 @@
 {
-"dkSTS:PlaceholderPotion": {
-        "NAME": "Placeholder Potion",
-        "DESCRIPTIONS": ["Gain ", " At the end of your turn, lose ", " Strength."]
-}
+        "dkSTS:PlaceholderPotion": {
+                "NAME": "Placeholder Potion",
+                "DESCRIPTIONS": ["Gain ", " At the end of your turn, lose ", " Strength."]
+        },
+        "dkSTS:ChillPotion": {
+                "NAME": "Chill Potion",
+                "DESCRIPTIONS": [
+                        "Apply ", " #yChill."
+                ]
+        },
+        "dkSTS:BruxaStancePotion": {
+                "NAME": "Bruxa Stance Potion",
+                "DESCRIPTION": [
+                        "Enter #yBloodlust or #yInvisible."
+                ]
+        }
 }

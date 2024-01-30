@@ -1,7 +1,7 @@
 {
   "dkSTS:Frostbite": {
     "NAME": "Frostbite",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! dksts:Frost."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! dksts:Chill."
   },
   "dkSTS:Strike": {
     "NAME": "Strike",
@@ -13,7 +13,11 @@
   },
   "dkSTS:Bite": {
     "NAME": "Bite",
-    "DESCRIPTION": "Deal !D! damage. NL Heal !M! HP."
+    "DESCRIPTION": "Deal !D! damage. NL dksts:Drain !H! HP."
+  },
+  "dkSTS:AscendedBite": {
+    "NAME": "Ascended Bite",
+    "DESCRIPTION": "Deal !D! damage. NL dksts:Drain !H! HP."
   },
   "dkSTS:SpiderClimb": {
     "NAME": "Spider Climb",
@@ -29,7 +33,7 @@
   },
   "dkSTS:BreachingBlast": {
     "NAME": "Breaching Blast",
-    "DESCRIPTION": "Deal !D! damage. If the target has dksts:Frost, deal !M! times the damage."
+    "DESCRIPTION": "Deal !D! damage. If the target has dksts:Chill, deal !M! times the damage."
   },
   "dkSTS:AssassinsBlade": {
     "NAME": "Assassin's Blade",
@@ -37,7 +41,7 @@
   },
   "dkSTS:ConsumeVitality": {
     "NAME": "Consume Vitality",
-    "DESCRIPTION": "Deal !D! damage. If Fatal, heal !M! HP and enter dksts:Bloodlust. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. If Fatal, dksts:Drain !H! HP and enter dksts:Bloodlust. NL Exhaust."
   },
   "dkSTS:CloudOfDarkness": {
     "NAME": "Cloud of Darkness",
@@ -53,16 +57,16 @@
   },
   "dkSTS:FeralLeap": {
     "NAME": "Feral Leap",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! dksts:Hunger"
+    "DESCRIPTION": "dksts:Wild. NL Deal !D! damage. NL Gain !M! dksts:Hunger."
   },
   "dkSTS:CrownOfIce": {
     "NAME": "Crown of Ice",
-    "DESCRIPTION": "Gain !B! Block. NL Gain 1 dksts:Frost NL Gain !M! Thorns until you next take damage. NL Exhaust.",
+    "DESCRIPTION": "Gain !B! Block. NL Gain 1 dksts:Chill NL Gain !M! Thorns until you next take damage. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain !M! Thorns until you next take damage. NL Exhaust."
   },
   "dkSTS:ArchfeysWisdom": {
     "NAME": "Archfey's Wisdom",
-    "DESCRIPTION": "At the start of each of your turns, gain [E]"
+    "DESCRIPTION": "At the start of each of your turns, gain [E] ."
   },
   "dkSTS:QuicklingsSpeed": {
     "NAME": "Quickling's Speed",
@@ -70,7 +74,7 @@
   },
   "dkSTS:RedcapsVitality": {
     "NAME": "Redcap's Vigor",
-    "DESCRIPTION": "Gain !M! dksts:Ward."
+    "DESCRIPTION": "Gain !M! dksts:Vitality."
   },
   "dkSTS:TitansStrength": {
     "NAME": "Titan's Strength",
@@ -78,26 +82,327 @@
   },
   "dkSTS:UnicornsBeauty": {
     "NAME": "Unicorn's Beauty",
-    "DESCRIPTION": "Prevent the next time you would lose HP."
+    "DESCRIPTION": "Gain 1 dksts:Feral."
   },
   "dkSTS:EnhanceAbility": {
     "NAME": "Enhance Ability",
-    "DESCRIPTION": "Choose one: NL Increase your Strength, Dexterity, dksts:Ward, [E] , or Gain a Buffer."
+    "DESCRIPTION": "Ethereal. NL Choose one: NL Gain 2 Strength, 2 Dexterity, 1 dksts:Vitality, or 1 dksts:Feral",
+    "UPGRADE_DESCRIPTION": "Choose one: NL Gain 2 Strength, 2 Dexterity, 1 dksts:Vitality, or 1 dksts:Feral"
   },
   "dkSTS:SleetStorm": {
     "NAME": "Sleet Storm",
-    "DESCRIPTION": "Apply !M! dksts:Frost to ALL enemies. NL Gain !dkSTS:SecondMagic! dksts:Evasion NL Exhaust all *Burns from your hand."
+    "DESCRIPTION": "Apply !M! dksts:Chill to ALL enemies. NL Gain !M2! dksts:Evasion NL Exhaust all *Burns from your hand."
   },
   "dkSTS:RuneOfTheRimefrost": {
     "NAME": "Rune of the Rimefrost",
-    "DESCRIPTION": "dksts:Hex: Apply 1 dksts:Frozen."
+    "DESCRIPTION": "dksts:Hex: Apply 1 dksts:Frozen. NL Exhaust."
   },
   "dkSTS:QuickSnack": {
     "NAME": "Quick Snack",
-    "DESCRIPTION": "Remove all your dksts:Hunger. NL Heal !M! HP. NL Exhaust."
+    "DESCRIPTION": "Remove all your dksts:Hunger. NL Gain !M! dksts:Ward. NL Exhaust."
   },
   "dkSTS:Desperation": {
     "NAME": "Desperation",
-    "DESCRIPTION": "Your attacks deal extra damage equal to your dksts:Hunger."
+    "DESCRIPTION": "Your attacks deal extra damage equal to your dksts:Hunger.",
+    "UPGRADE_DESCRIPTION": "Gain !M! dksts:Hunger. NL Your attacks deal extra damage equal to your dksts:Hunger."
+  },
+  "dkSTS:Stalk": {
+    "NAME": "Stalk",
+    "DESCRIPTION": "Innate. Ethereal. NL Scry !M!. NL Draw !M2! cards. NL Exhaust."
+  },
+  "dkSTS:GlyphOfShielding": {
+    "NAME": "Glyph Of Shielding",
+    "DESCRIPTION": "Retain. NL Next turn, gain !B! Block."
+  },
+  "dkSTS:Metastasize": {
+    "NAME": "Metastasize",
+    "DESCRIPTION": "Lose !M! Max HP. NL Take an extra turn after this one. NL End your turn. NL Exhaust."
+  },
+  "dkSTS:SecondChance": {
+    "NAME": "Second Chance",
+    "DESCRIPTION": "dksts:Redraw !M!. Add a *Dazed to your Discard Pile."
+  },
+  "dkSTS:Bloodstrike": {
+    "NAME": "Bloodstrike",
+    "DESCRIPTION": "dksts:Wild. NL Deal !D! damage. NL Lose !M! HP."
+  },
+  "dkSTS:VoidShout": {
+    "NAME": "Void Shout",
+    "DESCRIPTION": "Gain !B! Block. NL dksts:Voidflux: Gain !M! dksts:Vitality."
+  },
+  "dkSTS:PackMother": {
+    "NAME": "Pack Mother",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! dksts:Wolves. NL dksts:Sic your *Wolves."
+  },
+  "dkSTS:CallOfTheWild": {
+    "NAME": "Call of the Wild",
+    "DESCRIPTION": "Gain !M! dksts:Wolf. NL dksts:Sic them twice. NL Reduce this card's cost by 1 this combat."
+  },
+  "dkSTS:InspiringFerocity": {
+    "NAME": "Inspiring Ferocity",
+    "DESCRIPTION": "Gain !M! dksts:Feral."
+  },
+  "dkSTS:TwinnedGlyphs": {
+    "NAME": "Twinned Glyphs",
+    "DESCRIPTION": "The first card you play each turn which would give you a benefit next turn, gain it this turn, too.",
+    "UPGRADE_DESCRIPTION": "The first !M! cards you play each turn which would give you a benefit next turn, gain it this turn, too."
+  },
+  "dkSTS:GlyphOfAlacrity": {
+    "NAME": "Glyph Of Alacrity",
+    "DESCRIPTION": "Retain. NL Next turn, NL gain [E] [E] .",
+    "UPGRADE_DESCRIPTION": "Retain. NL Next turn, NL gain [E] [E] [E] ."
+  },
+  "dkSTS:GlyphOfPossibility": {
+    "NAME": "Glyph of Possibility",
+    "DESCRIPTION": "Retain. NL Next turn, draw !M! cards."
+  },
+  "dkSTS:GlyphOfVersatility": {
+    "NAME": "Glyph Of Versatility",
+    "DESCRIPTION": "Retain. NL Next turn, draw !M! card, gain !B! Block, NL and gain [E] . NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Next turn, draw !M! cards, gain !B! Block, NL and gain [E] [E] . NL Exhaust."
+  },
+  "dkSTS:IceBite": {
+    "NAME": "Ice Bite",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! dksts:Chill. NL dksts:Drain HP equal to half the target's dksts:Chill.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !M! dksts:Chill. NL dksts:Drain HP equal to the target's dkSts:Chill."
+  },
+  "dkSTS:BurstOfMist": {
+    "NAME": "Burst of Mist",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! dksts:Evasion. NL Discard !M! card."
+  },
+  "dkSTS:MemoryOfBlood": {
+    "NAME": "Memory of Blood",
+    "DESCRIPTION": "Lose !M2! HP. NL Gain !M! dksts:Hunger. NL Play !M3! random Attack from your Discard Pile.",
+    "UPGRADE_DESCRIPTION": "Lose !M2! HP. NL Gain !M! dksts:Hunger. NL Play !M3! random Attacks from your Discard Pile."
+  },
+  "dkSTS:ChaosMagic": {
+    "NAME": "Chaos Magic",
+    "DESCRIPTION": "Deal !D! damage to a random enemy three times. NL dksts:Flux: Play a random card from ANY class.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to a random enemy three times. NL dksts:Flux: Play !M! random cards from ANY class."
+  },
+  "dkSTS:Recruit": {
+    "NAME": "Recruit",
+    "DESCRIPTION": "Gain !M! dksts:Wolves. NL Exhaust."
+  },
+  "dkSTS:NaturesAnarchy": {
+    "NAME": "Nature's Anarchy",
+    "DESCRIPTION": "Gain !M! dksts:Wolves this turn only. NL dksts:Flux: dksts:Sic them !M3! times."
+  },
+  "dkSTS:Redo": {
+    "NAME": "Redo",
+    "DESCRIPTION": "Discard your hand. NL dksts:Redraw X. They cost 0 this turn. Exhaust. NL dksts:Flux: Don't Exhaust.",
+    "UPGRADE_DESCRIPTION": "Discard your hand. NL dksts:Redraw X+1. They cost 0 this turn. Exhaust. NL dksts:Flux: Don't Exhaust."
+  },
+  "dkSTS:Shatter": {
+    "NAME": "Shatter",
+    "DESCRIPTION": "Deal !D! damage. NL Deal !M! extra damage for each stack of dksts:Chill it has. NL Remove its dksts:Chill"
+  },
+  "dkSTS:FavorableRewind": {
+    "NAME": "Favorable Rewind",
+    "DESCRIPTION": "When you dksts:Redraw, you no longer draw Status or Curse cards.",
+    "UPGRADE_DESCRIPTION": "Innate. NL When you dksts:Redraw, you no longer draw Status or Curse cards."
+  },
+  "dkSTS:DefensiveRestoration": {
+    "NAME": "Shield of Pain",
+    "DESCRIPTION": "Gain !B! Block. Gain !M! additional Block for each Status in your hand and Discard Pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. Gain !M! additional Block for each Status in your hand and Discard Pile and Exhaust them."
+  },
+  "dkSTS:OffensiveRestoration": {
+    "NAME": "Offensive Restoration [DEP]",
+    "DESCRIPTION": "Deal !M! damage to ALL enemies for each Status in your Discard Pile. NL Exhaust them. NL (Deal !D! damage)",
+    "UPGRADE_DESCRIPTION": "Deal !M! damage to ALL enemies for each Status in your hand and Discard Pile. NL Exhaust them. NL (Deal !D! damage)"
+  },
+  "dkSTS:Faint": {
+    "NAME": "Faint",
+    "DESCRIPTION": "dksts:Redraw !M!. NL Lose !M3! HP. NL Add !M! *Dazed to your Discard Pile. NL Exhaust."
+  },
+  "dkSTS:CuringWounds": {
+    "NAME": "Curing Wounds",
+    "DESCRIPTION": "Whenever you draw a Status card, Heal 1 HP."
+  },
+  "dkSTS:Invisibility": {
+    "NAME": "Invisibility",
+    "DESCRIPTION": "Innate. NL Enter dksts:Invisibility. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. Retain. NL Enter dksts:Invisibility. NL Exhaust."
+  },
+  "dkSTS:ShadowStrike": {
+    "NAME": "Shadow Strike",
+    "DESCRIPTION": "Deal !D! damage. NL If you are dksts:Invisible, gain [E] [E] ."
+  },
+  "dkSTS:VanishingBite": {
+    "NAME": "Vanishing Bite",
+    "DESCRIPTION": "Deal !D! damage. NL dksts:Drain !H! HP. NL dksts:Flux: Enter dksts:Invisibility."
+  },
+  "dkSTS:BecomeInvisible": {
+    "NAME": "Become Invisible",
+    "DESCRIPTION": "Enter dksts:Invisibility."
+  },
+  "dkSTS:BecomeBloodthirsty": {
+    "NAME": "Become Bloodthirsty",
+    "DESCRIPTION": "Enter dksts:Bloodlust."
+  },
+  "dkSTS:Swipe": {
+    "NAME": "Swipe",
+    "DESCRIPTION": "dksts:Wild. NL Deal !D! damage. NL Your next Skill this turn costs 1 less."
+  },
+  "dkSTS:Simplements": {
+    "NAME": "Simplements",
+    "DESCRIPTION": "Your Basic and Common Attacks deal !M! more damage."
+  },
+  "dkSTS:VineWhip": {
+    "NAME": "Vine Whip",
+    "DESCRIPTION": "Deal !D! damage. NL dkSTS:Redraw !M!."
+  },
+  "dkSTS:Haste": {
+    "NAME": "Haste",
+    "DESCRIPTION": "At the start of each turn, gain [E] , draw 1 card, and shuffle !M! *Dazed into your Discard Pile."
+  },
+  "dkSTS:LifeTransference": {
+    "NAME": "Life Transference",
+    "DESCRIPTION": "Lose !M! HP. NL Gain !M3! Ward. NL Exhaust."
+  },
+  "dkSTS:VitalSacrifice": {
+    "NAME": "Vital Sacrifice",
+    "DESCRIPTION": "Lose !M3! Strength. NL Gain !M! Vigor. Gain !M2! dksts:Vitality. NL Exhaust."
+  },
+  "dkSTS:SaltAndSilver": {
+    "NAME": "Salt and Silver",
+    "DESCRIPTION": "Gain !M! Vulnerable. NL Gain [E] [E] . NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Gain !M! Vulnerable. NL Gain [E] [E] . NL Exhaust."
+  },
+  "dkSTS:BestialTransformation": {
+    "NAME": "Bestial Transformation",
+    "DESCRIPTION": "Transform into a dksts:Dire_Wolf. NL Exhaust."
+  },
+  "dkSTS:CrimsonRite": {
+    "NAME": "Crimson Rite",
+    "DESCRIPTION": "Whenever you lose HP from a card, gain !M! Regen."
+  },
+  "dkSTS:DreamEater": {
+    "NAME": "Dream Eater",
+    "DESCRIPTION": "Choose an enemy. Whenever you play a card while this enemy does not intend to attack, they lose !M! HP. NL Exhaust."
+  },
+  "dkSTS:FrenziedStrike": {
+    "NAME": "Frenzied Strike",
+    "DESCRIPTION": "dksts:Wild. NL Deal !D! damage. NL If dksts:Bloodied, deal !D! damage and Apply !M! Weak."
+  },
+  "dkSTS:MistWalk": {
+    "NAME": "Mist Walk",
+    "DESCRIPTION": "Gain !M! dksts:Evasion. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain !M! dksts:Evasion."
+  },
+  "dkSTS:FirstHunt": {
+    "NAME": "First Hunt",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! dksts:Wolf. NL Add a *Second *Hunt to your Discard Pile. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Gain !M! dksts:Wolves. NL Add a *Second *Hunt+ to your Discard Pile. NL Exhaust."
+  },
+  "dkSTS:SecondHunt": {
+    "NAME": "Second Hunt",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL dksts:Sic your dksts:Wolves. NL Add a *Final *Hunt to your Discard Pile. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. NL dksts:Sic your dksts:Wolves. NL Add a *Final *Hunt+ to your Discard Pile. NL Exhaust."
+  },
+  "dkSTS:FinalHunt": {
+    "NAME": "Final Hunt",
+    "DESCRIPTION": "dksts:Sic your dksts:Wolves !M! times, then dksts:Devour your dksts:Wolves. NL Enter dksts:Dire_Wolf. NL Exhaust."
+  },
+  "dkSTS:FeedTheBeast": {
+    "NAME": "Feed the Beast",
+    "DESCRIPTION": "dksts:Devour your dksts:Wolves. NL Deal !D! damage. NL If you dksts:Devoured 10 dksts:Wolves, Transform into a dksts:Dire_Wolf. NL Exhaust."
+  },
+  "dkSTS:FeralCharge": {
+    "NAME": "Feral Charge",
+    "DESCRIPTION": "dksts:Wild. Deal !D! damage to ALL enemies. NL dksts:Sic your dksts:Wolves, then dksts:Devour them. NL Exhaust."
+  },
+  "dkSTS:MindlessStrike": {
+    "NAME": "Mindless Strike",
+    "DESCRIPTION": "dksts:Wild. NL Deal !D! damage. NL Exhaust !M! card from your Discard Pile.",
+    "UPGRADE_DESCRIPTION": "dksts:Wild. NL Deal !D! damage. NL Exhaust !M! cards from your Discard Pile."
+  },
+  "dkSTS:IllFate": {
+    "NAME": "Ill Fate",
+    "DESCRIPTION": "Apply !M! dksts:Expose. NL dksts:Voidflux: Apply !M3! dksts:Expose. NL Exhaust."
+  },
+  "dkSTS:Shillelagh": {
+    "NAME": "Shillelagh",
+    "DESCRIPTION": "Deal !D! damage. NL dksts:Flux: Enemy loses !M! Strength this turn."
+  },
+  "dkSTS:ShadowCloak": {
+    "NAME": "Shadowcloak",
+    "DESCRIPTION": "Gain !B! Block. NL Add 1 *Void to your Discard Pile. NL dksts:Voidflux: Block is not removed at the start of your next turn."
+  },
+  "dkSTS:AstralTendrils": {
+    "NAME": "Astral Tendrils",
+    "DESCRIPTION": "At the start of every turn, take !M! damage. Whenever you take damage, add an *Echo *Tendril to your hand."
+  },
+  "dkSTS:EchoTendril": {
+    "NAME": "Echo Tendril",
+    "DESCRIPTION": "Ethereal. NL Deal !D! damage. NL dksts:Voidflux: Apply !M! dksts:Expose. NL Exhaust."
+  },
+  "dkSTS:RuneOfNull": {
+    "NAME": "Rune of Null",
+    "DESCRIPTION": "Ethereal. NL dksts:Hex: Enemy loses ALL Strength. NL dksts:Voidflux: Apply dksts:Hex to ALL enemies. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "dksts:Hex: Enemy loses ALL Strength. NL dksts:Voidflux: Apply dksts:Hex to ALL enemies. NL Exhaust."
+  },
+  "dkSTS:Voidchill":{
+    "NAME": "Voidchill",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! dksts:Chill. NL Add a *Void to your Discard Pile. "
+  },
+  "dkSTS:GlyphOfForesight": {
+    "NAME": "Glyph of Foresight",
+    "DESCRIPTION": "Choose a card in your hand and Exhaust it. NL At the start of your next turn, play it. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose a card in your hand and Exhaust it. NL At the start of your next turn, play it twice. NL Exhaust."
+  },
+  "dkSTS:LupineMutagen": {
+    "NAME": "Lupine Mutagen",
+    "DESCRIPTION": "Enter dksts:Dire_Wolf. NL When you exit dksts:Dire_Wolf, die."
+  },
+  "dkSTS:EmbraceTheVoid": {
+    "NAME": "Embrace The Void",
+    "DESCRIPTION": "Innate. NL You can always trigger dksts:Flux and dksts:Voidflux. NL At the start of your turn, lose 1 HP."
+  },
+  "dkSTS:BloodPalimpsest": {
+    "NAME": "Blood Palimpsest",
+    "DESCRIPTION": "Whenever you lose HP from a card, Discard and Upgrade this.",
+    "UPGRADE_DESCRIPTION": "Ethereal. dksts:Upgradable. NL When this card is Exhausted, dksts:Downgrade it. Gain !B! Block. Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "Gain !B! Block. NL Exhaust."
+    ]
+  },
+  "dkSTS:IcicleInferno": {
+    "NAME": "Shatter",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! dksts:Chill to ALL enemies. NL Add a *Burn to your Discard Pile."
+  },
+  "dkSTS:BloodLance": {
+    "NAME": "Blood Lance",
+    "DESCRIPTION": "Deal !D! damage. NL dksts:Flux: dksts:Drain !H! HP."
+  },
+  "dkSTS:Balance": {
+    "NAME": "Balance",
+    "DESCRIPTION": "Retain. Gain !M3! dksts:Vitality. NL dksts:Flux: Gain !M! Dexterity. Lose !M2! Strength. NL dksts:Voidflux: Gain !M! Strength. Lose !M2! Dexterity."
+  },
+  "dkSTS:MistyStep": {
+    "NAME": "Misty Step",
+    "DESCRIPTION": "Ethereal. dksts:Bonus. NL Prevent the next time you would lose HP this turn. NL End your turn.",
+    "UPGRADE_DESCRIPTION": "dksts:Bonus. NL Prevent the next time you would lose HP this turn. NL End your turn.",
+    "EXTENDED_DESCRIPTION": [
+      "Must be the second card played this turn..."
+    ]
+  },
+  "dkSTS:RavenousWard": {
+    "NAME": "Ravenous Ward",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Hunger."
+  },
+  "dkSTS:DancingStars": {
+    "NAME": "Dancing Stars",
+    "DESCRIPTION": "At the start of your turns, Apply 1 dkSTS:Expose to a random enemy !M! times."
+  },
+  "dkSTS:GlyphOfBeckoning": {
+    "NAME": "Glyph of Beckoning",
+    "DESCRIPTION": "Retain. Next turn, dksts:Sic your Wolves.",
+    "UPGRADE_DESCRIPTION": "Retain. Next turn, dksts:Sic your Wolves twice."
+  },
+  "dkSTS:EchoStrike": {
+    "NAME": "Echo Strike",
+    "DESCRIPTION": "Deal !D! damage. NL dksts:Flux: Deal !D! damage. NL dksts:Voidflux: Deal !D! damage."
   }
 }

@@ -9,9 +9,11 @@ import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.actions.watcher.NotStanceCheckAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.red.Reaper;
 import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.combat.EmptyStanceEffect;
 import dkSTS.cards.HelperCards.HungerStatus;
@@ -45,17 +47,14 @@ public class BloodlustStance extends AbstractBruxaStance {
 
     @Override
     public void onEndOfTurn() {
-        AbstractPlayer p = AbstractDungeon.player;
-        this.addToBot(new NotStanceCheckAction("Neutral", new VFXAction(new EmptyStanceEffect(p.hb.cX, p.hb.cY), 0.1F)));
-        this.addToBot(new ChangeStanceAction("Neutral"));
+        this.exitStance();
     }
 
-
-    public void onAfterCardPlayed(AbstractCard usedCard) {
-
-        if (usedCard.damage > 0 && usedCard.damageTypeForTurn == DamageInfo.DamageType.NORMAL) {
+    @Override
+    public void onMonsterAttacked(AbstractMonster mon, DamageInfo info, int damageAmount) {
+        if (damageAmount > 0 && info.type == DamageInfo.DamageType.NORMAL) {
             addToBot(
-                    new HealAction(AbstractDungeon.player, AbstractDungeon.player, MathUtils.floor((usedCard.damage)*0.5f))
+                    new HealAction(AbstractDungeon.player, AbstractDungeon.player, MathUtils.floor((damageAmount)*0.5f))
             );
             addToBot(
                     new MakeTempCardInDiscardAction(
@@ -64,6 +63,7 @@ public class BloodlustStance extends AbstractBruxaStance {
             );
         }
     }
+
     @Override
     protected AbstractStanceParticleEffect generateParticle() {
         return new BloodlustParticleEffect();

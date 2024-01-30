@@ -1,4 +1,4 @@
-package dkSTS.cards.Powers.Uncommon;
+package dkSTS.cards.Powers.Rare;
 
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,8 +15,8 @@ public class EnhanceAbility extends AbstractBruxaCard {
 
     public static BruxaCardData data = new BruxaCardDataBuilder()
             .id(EnhanceAbility.class)
-            .img("Power.png")
-            .rarity(CardRarity.UNCOMMON)
+            .img("EnhanceAbility.png")
+            .rarity(CardRarity.RARE)
             .type(CardType.POWER)
             .target(CardTarget.SELF)
             .cost(2)
@@ -24,17 +24,20 @@ public class EnhanceAbility extends AbstractBruxaCard {
 
     public EnhanceAbility() {
         super(data);
+
+        isEthereal = true;
     }
 
     @Override
     protected void UpgradeParameters() {
-        upgradeBaseCost(1);
+        isEthereal = false;
+        UpgradeDescription();
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         ArrayList<AbstractCard> cards = new ArrayList<AbstractCard>();
-        cards.add(new ArchfeysWisdom());
+//        cards.add(new ArchfeysWisdom());
         cards.add(new QuicklingsSpeed());
         cards.add(new RedcapsVitality());
         cards.add(new TitansStrength());

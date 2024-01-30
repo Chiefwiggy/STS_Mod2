@@ -18,7 +18,7 @@ public class TitansStrength extends AbstractBruxaCard {
             .type(CardType.SKILL)
             .rarity(CardRarity.SPECIAL)
             .color(CardColor.COLORLESS)
-            .cost(0)
+            .unplayable()
             .img("Skill.png")
             .build();
 

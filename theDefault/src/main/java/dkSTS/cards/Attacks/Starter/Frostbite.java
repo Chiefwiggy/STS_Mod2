@@ -42,13 +42,11 @@ public class Frostbite extends AbstractBruxaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBottom(
-                new DamageActionBuilder()
-                        .damage(damage)
-                        .target(m)
-                        .animation(AbstractGameAction.AttackEffect.LIGHTNING)
-                        .build()
-        );
+        new DamageActionBuilder()
+                .damage(damage)
+                .target(m)
+                .animation(AbstractGameAction.AttackEffect.LIGHTNING)
+                .addToBottom();
 
         new ApplyPowerBuilder()
                 .power(FrostPower.class)

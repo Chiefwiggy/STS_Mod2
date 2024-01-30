@@ -7,12 +7,13 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import dkSTS.cards.Abstracts.AbstractBruxaCard;
+import dkSTS.cards.Abstracts.AbstractDrainCard;
 import dkSTS.cards.Helpers.BruxaCardData;
 import dkSTS.cards.Helpers.BruxaCardDataBuilder;
 import dkSTS.cards.Helpers.DamageActionBuilder;
 
 
-public class Bite extends AbstractBruxaCard {
+public class Bite extends AbstractDrainCard {
 
     public static BruxaCardData data = new BruxaCardDataBuilder()
             .id(Bite.class)
@@ -23,7 +24,7 @@ public class Bite extends AbstractBruxaCard {
 
 
 
-    private static final int DAMAGE = 7;
+    private static final int DAMAGE = 5;
     private static final int DAMAGE_UPGRADE = 1;
 
     private static final int HEAL = 2;
@@ -33,31 +34,29 @@ public class Bite extends AbstractBruxaCard {
         super(data);
 
         baseDamage = DAMAGE;
-        baseMagicNumber = HEAL;
+        baseHeal = heal = HEAL;
 
     }
 
     @Override
     protected void UpgradeParameters() {
         upgradeDamage(DAMAGE_UPGRADE);
-        upgradeMagicNumber(HEAL_UPGRADE);
+        upgradeHeal(HEAL_UPGRADE);
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster m) {
+    public void postHungerUse(AbstractPlayer abstractPlayer, AbstractMonster m) {
 
-        this.addAnimation(m, BiteEffect.class, Settings.GOLD_COLOR.cpy());
+        //this.addAnimation(m, BiteEffect.class, Settings.GOLD_COLOR.cpy());
 
-        addToBottom(
-                new DamageActionBuilder()
-                        .damage(damage)
-                        .target(m)
-                        .animation(AbstractGameAction.AttackEffect.POISON)
-                        .build()
-        );
+        new DamageActionBuilder()
+                .damage(damage)
+                .target(m)
+                .animation(AbstractGameAction.AttackEffect.POISON)
+                .addToBottom();
 
         addToBottom(
-                new HealAction(abstractPlayer, abstractPlayer, magicNumber)
+                new HealAction(abstractPlayer, abstractPlayer, heal)
         );
     }
 }

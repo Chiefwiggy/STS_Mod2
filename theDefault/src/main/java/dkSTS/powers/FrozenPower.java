@@ -13,7 +13,7 @@ import static com.badlogic.gdx.graphics.Color.*;
 public class FrozenPower extends AbstractCountdownPower {
     public static PowerData data = new PowerDataBuilder()
             .id(FrozenPower.class)
-            .img_path("placeholder_power")
+            .img_path("frozen")
             .debuff()
             .turnBased()
             .build();
@@ -22,6 +22,7 @@ public class FrozenPower extends AbstractCountdownPower {
         super(data, owner, source, amount);
 
         owner.tint.changeColor(BLUE.cpy());
+        priority = 200;
     }
 
     @Override

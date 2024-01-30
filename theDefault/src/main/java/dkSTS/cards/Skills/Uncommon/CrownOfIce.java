@@ -1,4 +1,4 @@
-package dkSTS.cards.Skills.Rare;
+package dkSTS.cards.Skills.Uncommon;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,15 +15,15 @@ public class CrownOfIce extends AbstractBruxaCard {
 
     public static BruxaCardData data = new BruxaCardDataBuilder()
             .id(CrownOfIce.class)
-            .img("Skill.png")
-            .rarity(CardRarity.RARE)
+            .img("CrownOfIce.png")
+            .rarity(CardRarity.UNCOMMON)
             .type(CardType.SKILL)
             .cost(1)
             .target(CardTarget.SELF)
             .build();
 
-    private static final int BLOCK = 6;
-    private static final int THORNS = 6;
+    private static final int BLOCK = 7;
+    private static final int THORNS = 7;
 
     public CrownOfIce() {
         super(data);

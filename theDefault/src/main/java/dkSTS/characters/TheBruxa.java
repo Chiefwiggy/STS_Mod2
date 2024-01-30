@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
@@ -62,9 +63,9 @@ public class TheBruxa extends CustomPlayer {
     // =============== BASE STATS =================
 
     public static final int ENERGY_PER_TURN = 3;
-    public static final int STARTING_HP = 56;
-    public static final int MAX_HP = 56;
-    public static final int STARTING_GOLD = 99;
+    public static final int STARTING_HP = 57;
+    public static final int MAX_HP = 57;
+    public static final int STARTING_GOLD = 199;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 0;
 
@@ -77,6 +78,8 @@ public class TheBruxa extends CustomPlayer {
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
+
+    public boolean hasTriggeredMirrorEvent;
 
     // =============== /STRINGS/ =================
 
@@ -102,9 +105,13 @@ public class TheBruxa extends CustomPlayer {
 
     public TheBruxa(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "dkSTSResources/images/char/defaultCharacter/orb/vfx.png", null,
+                "dkSTSResources/images/char/defaultCharacter/orb/vfx.png", new float[]{-20.0f, 20.0F, -40.0F, 40.0F, 0.0F},
                 new SpriterAnimation(
                         "dkSTSResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
+
+
+
+
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
@@ -136,6 +143,7 @@ public class TheBruxa extends CustomPlayer {
         dialogX = (drawX + 0.0F * Settings.scale); // set location for text bubbles
         dialogY = (drawY + 220.0F * Settings.scale); // you can just copy these values
 
+        hasTriggeredMirrorEvent = false;
         // =============== /TEXT BUBBLE LOCATION/ =================
 
     }
@@ -171,6 +179,8 @@ public class TheBruxa extends CustomPlayer {
         retVal.add(SpiderClimb.data.ID);
 
 
+
+
         return retVal;
     }
 
@@ -178,8 +188,8 @@ public class TheBruxa extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(EldritchRuneRelic.data.ID);
         retVal.add(AlacrityRuneRelic.data.ID);
+        retVal.add(AncestorsDebt.data.ID);
 
         return retVal;
     }
@@ -214,7 +224,7 @@ public class TheBruxa extends CustomPlayer {
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return dkSTS.DefaultMod.DEFAULT_GRAY;
+        return new Color(25.0f, 25.0f, 112.0f, 1.0f);
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -233,7 +243,7 @@ public class TheBruxa extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Bite();
+        return new SpiderClimb();
     }
 
     // The class name as it appears next to your player name in-game

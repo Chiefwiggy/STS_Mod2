@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.colorless.Bite;
+import com.megacrit.cardcrawl.cards.red.Reaper;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -39,9 +40,7 @@ public class ConsumeVitalityAction  extends AbstractGameAction {
             //add card
             AbstractPlayer p = AbstractDungeon.player;
 
-            addToBot(
-                    new HealAction(p, p, heal)
-            );
+            addToBot(new HealAction(p, p, heal));
 
             addToBot(
                     new ChangeStanceAction(new BloodlustStance())
@@ -56,9 +55,9 @@ public class ConsumeVitalityAction  extends AbstractGameAction {
             }
         }
 
-        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-            AbstractDungeon.actionManager.clearPostCombatActions();
-        }
+//        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+//            AbstractDungeon.actionManager.clearPostCombatActions();
+//        }
 
         this.isDone = true;
     }

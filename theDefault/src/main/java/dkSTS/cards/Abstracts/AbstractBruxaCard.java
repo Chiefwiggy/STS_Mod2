@@ -1,8 +1,10 @@
 package dkSTS.cards.Abstracts;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,13 +16,30 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import dkSTS.DefaultMod;
 import dkSTS.cards.Helpers.BruxaCardData;
 import dkSTS.powers.AbstractCustomPower;
+import dkSTS.powers.VitalityPower;
 
 public abstract class AbstractBruxaCard extends AbstractDynamicCard {
 
     private final String UPGRADE_DESCRIPTION;
+    protected final String[] EXTENDED_DESCRIPTIONS;
+    protected final String ORIGINAL_DESCRIPTION;
+    protected final String BASE_NAME;
+
+    public int __baseMagicThird;
+    public int __magicThird;
+    public boolean upgradedMagicThird;
+    public boolean isMagicThirdNumberModified;
+
+    public boolean upgradedHeal;
+    public boolean isHealModified;
     public AbstractBruxaCard(BruxaCardData data) {
         super(data.ID, DefaultMod.makeCardPath(data.IMG), data.COST, data.TYPE, data.COLOR, data.RARITY, data.TARGET);
         UPGRADE_DESCRIPTION = CardCrawlGame.languagePack.getCardStrings(data.ID).UPGRADE_DESCRIPTION;
+        EXTENDED_DESCRIPTIONS = CardCrawlGame.languagePack.getCardStrings(data.ID).EXTENDED_DESCRIPTION;
+        ORIGINAL_DESCRIPTION = CardCrawlGame.languagePack.getCardStrings(data.ID).DESCRIPTION;
+        BASE_NAME = CardCrawlGame.languagePack.getCardStrings(data.ID).NAME;
+        isMagicThirdNumberModified = false;
+        isHealModified = false;
     }
 
     protected void AddTag(CardTags tag) {
@@ -52,29 +71,40 @@ public abstract class AbstractBruxaCard extends AbstractDynamicCard {
         rawDescription = UPGRADE_DESCRIPTION;
     }
 
-    protected <T extends AbstractPower> void gainPower(Class<T> appliedClass, final int amount) {
-        AbstractPlayer p = AbstractDungeon.player;
-        try {
-            addToBottom(
-                    new ApplyPowerAction(p, p, appliedClass.getDeclaredConstructor(AbstractCreature.class, AbstractCreature.class, Integer.class).newInstance(p, p, amount))
-            );
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void triggerWhenDrawn() {
+        super.triggerWhenDrawn();
+        applyPowers();
     }
 
-    protected <T extends AbstractCustomPower> void applyPower(Class<T> appliedClass, final AbstractMonster m, final int amount) {
-        AbstractPlayer p = AbstractDungeon.player;
-        try {
-            addToBottom(
-                    new ApplyPowerAction(m, p, appliedClass.getDeclaredConstructor(AbstractCreature.class, AbstractCreature.class, Integer.class).newInstance(m, p, amount))
-            );
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
     protected abstract void UpgradeParameters();
+
+    @Override
+    public void displayUpgrades() {
+        super.displayUpgrades();
+        if (upgradedMagicThird) {
+            __magicThird = __baseMagicThird;
+            isMagicThirdNumberModified = true;
+        }
+        if (upgradedHeal) {
+            heal = baseHeal;
+            isHealModified = true;
+        }
+    }
+
+    public void upgradeHeal(int amount) {
+        baseHeal += amount;
+        heal = baseHeal;
+        upgradedHeal = true;
+    }
+
+    public void upgradeMagicThird(int amount) {
+        __baseMagicThird += amount;
+        __magicThird = __baseMagicThird;
+        upgradedMagicThird = true;
+    }
 
     public void upgrade() {
         if (!upgraded) {
@@ -83,4 +113,11 @@ public abstract class AbstractBruxaCard extends AbstractDynamicCard {
             initializeDescription();
         }
     }
+
+    protected final boolean isPlayerBloodied() {
+        AbstractPlayer p = AbstractDungeon.player;
+        return p.currentHealth < p.maxHealth*0.5f;
+    }
+
+    public void onReceiveDamageWhileInHand(DamageInfo info, int damageAmount) {}
 }

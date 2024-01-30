@@ -23,8 +23,10 @@ public class CloudOfDarkness extends AbstractBruxaCard {
             .build();
 
     private static final int BLOCK = 11;
+    private static final int BLOCK_UPGRADE = 3;
 
-    private static final int VIGOR = 5;
+    private static final int VIGOR = 4;
+    private static final int VIGOR_UPGRADE = 2;
 
     public CloudOfDarkness() {
         super(data);
@@ -35,7 +37,8 @@ public class CloudOfDarkness extends AbstractBruxaCard {
 
     @Override
     protected void UpgradeParameters() {
-        upgradeBaseCost(1);
+        upgradeBlock(BLOCK_UPGRADE);
+        upgradeMagicNumber(VIGOR_UPGRADE);
     }
 
     @Override
